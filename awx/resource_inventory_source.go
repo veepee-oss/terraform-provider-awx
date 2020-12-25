@@ -52,6 +52,10 @@ func resourceInventorySource() *schema.Resource {
 				Default:  0,
 				Optional: true,
 			},
+			"update_on_launch": &schema.Schema{
+				Type:     schema.TypeBool,
+				Optional: true,
+			},
 			"source": &schema.Schema{
 				Type:     schema.TypeString,
 				Default:  "scm",
@@ -59,13 +63,21 @@ func resourceInventorySource() *schema.Resource {
 			},
 			"source_project_id": &schema.Schema{
 				Type:     schema.TypeInt,
-				Required: true,
+				Optional: true,
 			},
 			"source_path": &schema.Schema{
 				Type:     schema.TypeString,
 				Default:  "",
 				Optional: true,
 				ForceNew: true,
+			},
+			"credential_id": &schema.Schema{
+				Type:     schema.TypeInt,
+				Optional: true,
+			},
+			"overwrite": &schema.Schema{
+				Type:     schema.TypeBool,
+				Optional: true,
 			},
 		},
 		Importer: &schema.ResourceImporter{
@@ -79,13 +91,16 @@ func resourceInventorySourceCreate(ctx context.Context, d *schema.ResourceData, 
 	awxService := client.InventorySourcesService
 
 	result, err := awxService.CreateInventorySource(map[string]interface{}{
-		"name":           d.Get("name").(string),
-		"inventory":      d.Get("inventory_id").(int),
-		"overwrite_vars": d.Get("overwrite_vars").(bool),
-		"verbosity":      d.Get("verbosity").(int),
-		"source":         d.Get("source").(string),
-		"source_project": d.Get("source_project_id").(int),
-		"source_path":    d.Get("source_path").(string),
+		"name":             d.Get("name").(string),
+		"inventory":        d.Get("inventory_id").(int),
+		"overwrite_vars":   d.Get("overwrite_vars").(bool),
+		"verbosity":        d.Get("verbosity").(int),
+		"source":           d.Get("source").(string),
+		"credential":       d.Get("credential_id").(int),
+		"source_project":   d.Get("source_project_id").(int),
+		"update_on_launch": d.Get("update_on_launch").(bool),
+		"source_path":      d.Get("source_path").(string),
+		"overwrite":        d.Get("overwrite").(bool),
 	}, map[string]string{})
 	if err != nil {
 		return buildDiagCreateFail(diagElementInventorySourceTitle, err)
@@ -105,12 +120,16 @@ func resourceInventorySourceUpdate(ctx context.Context, d *schema.ResourceData, 
 	}
 
 	_, err := awxService.UpdateInventorySource(id, map[string]interface{}{
-		"name":           d.Get("name").(string),
-		"overwrite_vars": d.Get("overwrite_vars").(bool),
-		"verbosity":      d.Get("verbosity").(int),
-		"source":         d.Get("source").(int),
-		"source_project": d.Get("source_project_id").(int),
-		"source_path":    d.Get("source_path").(string),
+		"name":             d.Get("name").(string),
+		"inventory":        d.Get("inventory_id").(int),
+		"overwrite_vars":   d.Get("overwrite_vars").(bool),
+		"verbosity":        d.Get("verbosity").(int),
+		"source":           d.Get("source").(string),
+		"credential":       d.Get("credential_id").(int),
+		"source_project":   d.Get("source_project_id").(int),
+		"update_on_launch": d.Get("update_on_launch").(bool),
+		"source_path":      d.Get("source_path").(string),
+		"overwrite":        d.Get("overwrite").(bool),
 	}, nil)
 	if err != nil {
 		return buildDiagUpdateFail(diagElementInventorySourceTitle, id, err)
