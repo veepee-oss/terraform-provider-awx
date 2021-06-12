@@ -2,6 +2,8 @@ package awx
 
 import (
 	"context"
+	"crypto/tls"
+	"net/http"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -15,6 +17,12 @@ func Provider() *schema.Provider {
 				Type:        schema.TypeString,
 				Optional:    true,
 				DefaultFunc: schema.EnvDefaultFunc("AWX_HOSTNAME", "http://localhost"),
+			},
+			"insecure": {
+				Type:        schema.TypeBool,
+				Optional:    true,
+				Default:     false,
+				Description: "Disable SSL verification of API calls",
 			},
 			"username": &schema.Schema{
 				Type:        schema.TypeString,
@@ -68,10 +76,16 @@ func providerConfigure(ctx context.Context, d *schema.ResourceData) (interface{}
 	username := d.Get("username").(string)
 	password := d.Get("password").(string)
 
+	client := http.DefaultClient
+	if d.Get("insecure").(bool) {
+		client.Transport = &http.Transport{
+			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+		}
+	}
+
 	// Warning or errors can be collected in a slice type
 	var diags diag.Diagnostics
-
-	c, err := awx.NewAWX(hostname, username, password, nil)
+	c, err := awx.NewAWX(hostname, username, password, client)
 	if err != nil {
 		diags = append(diags, diag.Diagnostic{
 			Severity: diag.Error,
