@@ -20,11 +20,12 @@ Use this data source to query Credential by ID.
 
 The following arguments are supported:
 
-* `id` - (Required) Credential id
+* `id` - (Required) 
 
 ## Attributes Reference
 
 In addition to all arguments above, the following attributes are exported:
 
-* `kind` - The Kind from searched id
-* `username` - The Username from searched id
+* `kind` - 
+* `tower_id` - 
+* `username` - 

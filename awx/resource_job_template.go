@@ -348,7 +348,7 @@ func setJobTemplateResourceData(d *schema.ResourceData, r *awx.JobTemplate) *sch
 	d.Set("ask_tags_on_launch", r.AskTagsOnLaunch)
 	d.Set("ask_variables_on_launch", r.AskVariablesOnLaunch)
 	d.Set("description", r.Description)
-	d.Set("extra_vars", r.ExtraVars)
+	d.Set("extra_vars", normalizeJsonYaml(r.ExtraVars))
 	d.Set("force_handlers", r.ForceHandlers)
 	d.Set("forks", r.Forks)
 	d.Set("host_config_key", r.HostConfigKey)

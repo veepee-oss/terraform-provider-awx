@@ -13,7 +13,6 @@ package awx
 import (
 	"context"
 	"strconv"
-	"time"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -25,19 +24,20 @@ func dataSourceCredentialByID() *schema.Resource {
 		ReadContext: dataSourceCredentialByIDRead,
 		Schema: map[string]*schema.Schema{
 			"id": &schema.Schema{
-				Type:        schema.TypeInt,
-				Required:    true,
-				Description: "Credential id",
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"tower_id": &schema.Schema{
+				Type:     schema.TypeInt,
+				Computed: true,
 			},
 			"username": &schema.Schema{
-				Type:        schema.TypeString,
-				Computed:    true,
-				Description: "The Username from searched id",
+				Type:     schema.TypeString,
+				Computed: true,
 			},
 			"kind": &schema.Schema{
-				Type:        schema.TypeString,
-				Computed:    true,
-				Description: "The Kind from searched id",
+				Type:     schema.TypeString,
+				Computed: true,
 			},
 		},
 	}
@@ -59,7 +59,9 @@ func dataSourceCredentialByIDRead(ctx context.Context, d *schema.ResourceData, m
 
 	d.Set("username", cred.Inputs["username"])
 	d.Set("kind", cred.Kind)
-	d.SetId(strconv.FormatInt(time.Now().Unix(), 10))
+	d.Set("tower_id", id)
+	d.SetId(strconv.Itoa(id))
+	// d.SetId(strconv.FormatInt(time.Now().Unix(), 10))
 
 	return diags
 }

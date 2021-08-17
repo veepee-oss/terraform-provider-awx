@@ -22,10 +22,16 @@ The following arguments are supported:
 
 * `inventory_id` - (Required, ForceNew) 
 * `name` - (Required) 
-* `source_project_id` - (Required) 
+* `credential_id` - (Optional) 
+* `description` - (Optional) 
+* `group_by` - (Optional, ForceNew) 
+* `instance_filters` - (Optional, ForceNew) 
 * `overwrite_vars` - (Optional) 
-* `source_path` - (Optional, ForceNew) 
+* `overwrite` - (Optional) 
+* `source_regions` - (Optional) 
+* `source_vars` - (Optional) 
 * `source` - (Optional) 
 * `update_cache_timeout` - (Optional) 
+* `update_on_launch` - (Optional) 
 * `verbosity` - (Optional) 
 
