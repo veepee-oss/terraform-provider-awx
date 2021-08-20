@@ -110,7 +110,6 @@ func resourceCredentialUpdate(ctx context.Context, d *schema.ResourceData, m int
 	keys := []string{
 		"name",
 		"description",
-		"inputs",
 		"organisation_id",
 	}
 
