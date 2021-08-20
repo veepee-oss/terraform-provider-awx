@@ -100,7 +100,6 @@ func resourceCredentialRead(ctx context.Context, d *schema.ResourceData, m inter
 	d.Set("name", cred.Name)
 	d.Set("description", cred.Description)
 	d.Set("organisation_id", cred.OrganizationID)
-	d.Set("inputs", cred.Inputs)
 
 	return diags
 }
