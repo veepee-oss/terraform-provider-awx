@@ -25,5 +25,4 @@ The following arguments are supported:
 * `name` - (Required) 
 * `organisation_id` - (Required) 
 * `description` - (Optional) 
-* `kind` - (Optional) cloud or net
 
