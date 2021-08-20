@@ -36,12 +36,6 @@ func resourceCredential() *schema.Resource {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"kind": &schema.Schema{
-				Type:     schema.TypeString,
-				Optional: true,
-				Default: "cloud",
-				Description: "cloud or net",
-			},
 			"organisation_id": &schema.Schema{
 				Type:     schema.TypeInt,
 				Required: true,
@@ -80,7 +74,6 @@ func resourceCredentialCreate(ctx context.Context, d *schema.ResourceData, m int
 	newCredential := map[string]interface{}{
 		"name":            d.Get("name").(string),
 		"description":     d.Get("description").(string),
-		"kind":            d.Get("kind").(string),
 		"organization":    d.Get("organisation_id").(int),
 		"credential_type": d.Get("credential_type_id").(int),
 		"inputs":          inputs_map,
@@ -120,7 +113,6 @@ func resourceCredentialRead(ctx context.Context, d *schema.ResourceData, m inter
 
 	d.Set("name", cred.Name)
 	d.Set("description", cred.Description)
-	d.Set("kind", cred.Kind)
 	d.Set("organisation_id", cred.OrganizationID)
 	d.Set("inputs", cred.Inputs)
 
@@ -133,7 +125,6 @@ func resourceCredentialUpdate(ctx context.Context, d *schema.ResourceData, m int
 	keys := []string{
 		"name",
 		"description",
-		"kind",
 		"organisation_id",
 		"inputs",
 	}
@@ -157,7 +148,6 @@ func resourceCredentialUpdate(ctx context.Context, d *schema.ResourceData, m int
 		id, _ := strconv.Atoi(d.Id())
 		updatedCredential := map[string]interface{}{
 			"name":            d.Get("name").(string),
-			"kind":            d.Get("kind").(string),
 			"description":     d.Get("description").(string),
 			"organization":    d.Get("organisation_id").(int),
 			"credential_type": d.Get("credential_type_id"),
