@@ -13,6 +13,7 @@ package awx
 import (
 	"context"
 	"fmt"
+	"encoding/json"
 	"strconv"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
@@ -34,6 +35,12 @@ func resourceCredential() *schema.Resource {
 			"description": &schema.Schema{
 				Type:     schema.TypeString,
 				Optional: true,
+			},
+			"kind": &schema.Schema{
+				Type:     schema.TypeString,
+				Optional: true,
+				Default: "cloud",
+				Description: "cloud or net",
 			},
 			"organisation_id": &schema.Schema{
 				Type:     schema.TypeInt,
@@ -57,12 +64,26 @@ func resourceCredentialCreate(ctx context.Context, d *schema.ResourceData, m int
 	var diags diag.Diagnostics
 	var err error
 
+	inputs := d.Get("inputs").(string)
+	inputs_map := make(map[string]interface{})
+	jsonerr := json.Unmarshal([]byte(inputs), &inputs_map)
+
+	if jsonerr != nil {
+		diags = append(diags, diag.Diagnostic{
+			Severity: diag.Error,
+			Summary:  "Unable to create new credential",
+			Detail:   fmt.Sprintf("Unable to create new credential: %s", jsonerr.Error()),
+		})
+		return diags
+	}
+
 	newCredential := map[string]interface{}{
 		"name":            d.Get("name").(string),
 		"description":     d.Get("description").(string),
-		"organisation_id": d.Get("organisation_id").(int),
-		"credential_type": d.Get("credential_type_id"),
-		"inputs":          normalizeJsonYaml(d.Get("inputs")),
+		"kind":            d.Get("kind").(string),
+		"organization":    d.Get("organisation_id").(int),
+		"credential_type": d.Get("credential_type_id").(int),
+		"inputs":          inputs_map,
 	}
 
 	client := m.(*awx.AWX)
@@ -99,7 +120,9 @@ func resourceCredentialRead(ctx context.Context, d *schema.ResourceData, m inter
 
 	d.Set("name", cred.Name)
 	d.Set("description", cred.Description)
+	d.Set("kind", cred.Kind)
 	d.Set("organisation_id", cred.OrganizationID)
+	d.Set("inputs", cred.Inputs)
 
 	return diags
 }
@@ -110,19 +133,35 @@ func resourceCredentialUpdate(ctx context.Context, d *schema.ResourceData, m int
 	keys := []string{
 		"name",
 		"description",
+		"kind",
 		"organisation_id",
+		"inputs",
 	}
 
 	if d.HasChanges(keys...) {
 		var err error
 
+		inputs := d.Get("inputs").(string)
+		inputs_map := make(map[string]interface{})
+		jsonerr := json.Unmarshal([]byte(inputs), &inputs_map)
+	
+		if jsonerr != nil {
+			diags = append(diags, diag.Diagnostic{
+				Severity: diag.Error,
+				Summary:  "Unable to create new credential",
+				Detail:   fmt.Sprintf("Unable to create new credential: %s", jsonerr.Error()),
+			})
+			return diags
+		}
+
 		id, _ := strconv.Atoi(d.Id())
 		updatedCredential := map[string]interface{}{
 			"name":            d.Get("name").(string),
+			"kind":            d.Get("kind").(string),
 			"description":     d.Get("description").(string),
 			"organization":    d.Get("organisation_id").(int),
 			"credential_type": d.Get("credential_type_id"),
-			"inputs":          normalizeJsonYaml(d.Get("inputs")),
+			"inputs":          inputs_map,
 		}
 
 		client := m.(*awx.AWX)
