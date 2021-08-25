@@ -19,9 +19,10 @@ resource "awx_job_template" "baseconfig" {
 }
 
 resource "awx_job_template_launch" "now" {
-
+  job_template_id = awx_job_template.baseconfig.id
 }
 ```
+
 */
 
 package awx
