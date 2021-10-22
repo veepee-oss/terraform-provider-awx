@@ -115,6 +115,23 @@ func CredentialsServiceDeleteByID(ctx context.Context, d *schema.ResourceData, m
 
 	return diags
 }
+func CredentialTypeServiceDeleteByID(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+	var diags diag.Diagnostics
+
+	id, _ := strconv.Atoi(d.Id())
+	client := m.(*awx.AWX)
+	err := client.CredentialTypeService.DeleteCredentialTypeByID(id, map[string]string{})
+	if err != nil {
+		diags = append(diags, diag.Diagnostic{
+			Severity: diag.Error,
+			Summary:  "Unable to delete existing credential type",
+			Detail:   fmt.Sprintf("Unable to delete existing credential type with id %d: %s", id, err.Error()),
+		})
+	}
+
+	return diags
+}
+
 func normalizeJsonYaml(s interface{}) string {
 	result := string("")
 	if j, ok := normalizeJsonOk(s); ok {
