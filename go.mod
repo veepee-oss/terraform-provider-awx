@@ -23,7 +23,7 @@ require (
 	github.com/stretchr/testify v1.7.0
 	github.com/zclconf/go-cty v1.9.1 // indirect
 	golang.org/x/net v0.0.0-20211020060615-d418f374d309 // indirect
-	golang.org/x/sys v0.0.0-20211020174200-9d6173849985 // indirect
+	golang.org/x/sys v0.0.0-20211025112917-711f33c9992c // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/genproto v0.0.0-20211021150943-2b146023228c // indirect
@@ -31,4 +31,4 @@ require (
 	gopkg.in/yaml.v2 v2.4.0
 )
 
-replace github.com/mrcrilly/goawx => github.com/f0rkz/goawx v0.2.3
+replace github.com/mrcrilly/goawx => github.com/f0rkz/goawx v0.3.0

@@ -40,7 +40,7 @@ func resourceCredentialType() *schema.Resource {
 			},
 			"kind": &schema.Schema{
 				Type:        schema.TypeString,
-				Optional:    false,
+				Optional:    true,
 				Default:     "cloud",
 				Description: "Choices cloud or net",
 			},

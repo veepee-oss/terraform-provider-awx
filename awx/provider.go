@@ -41,6 +41,7 @@ func Provider() *schema.Provider {
 			"awx_credential_google_compute_engine":   resourceCredentialGoogleComputeEngine(),
 			"awx_credential_input_source":            resourceCredentialInputSource(),
 			"awx_credential":                         resourceCredential(),
+			"awx_credential_type":                    resourceCredentialType(),
 			"awx_credential_machine":                 resourceCredentialMachine(),
 			"awx_credential_scm":                     resourceCredentialSCM(),
 			"awx_host":                               resourceHost(),
