@@ -91,6 +91,20 @@ func resourceInventorySource() *schema.Resource {
 				Default:  1,
 				Optional: true,
 			},
+			// obsolete schema added so terraform doesn't break
+			// these don't do anything in later versions of AWX! Update your code.
+			"source_regions": &schema.Schema{
+				Type:     schema.TypeString,
+				Optional: true,
+			},
+			"instance_filters": &schema.Schema{
+				Type:     schema.TypeString,
+				Optional: true,
+			},
+			"group_by": &schema.Schema{
+				Type:     schema.TypeString,
+				Optional: true,
+			},
 		},
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
@@ -117,6 +131,11 @@ func resourceInventorySourceCreate(ctx context.Context, d *schema.ResourceData, 
 		"host_filter":          d.Get("host_filter").(string),
 		"update_cache_timeout": d.Get("update_cache_timeout").(int),
 		"verbosity":            d.Get("verbosity").(int),
+		// obsolete schema added so terraform doesn't break
+		// these don't do anything in later versions of AWX! Update your code.
+		"source_regions":   d.Get("source_regions").(string),
+		"instance_filters": d.Get("instance_filters").(string),
+		"group_by":         d.Get("group_by").(string),
 		// "source_project":   d.Get("source_project_id").(int),
 		// "source_path":      d.Get("source_path").(string),
 	}, map[string]string{})
@@ -152,6 +171,11 @@ func resourceInventorySourceUpdate(ctx context.Context, d *schema.ResourceData, 
 		"host_filter":          d.Get("host_filter").(string),
 		"update_cache_timeout": d.Get("update_cache_timeout").(int),
 		"verbosity":            d.Get("verbosity").(int),
+		// obsolete schema added so terraform doesn't break
+		// these don't do anything in later versions of AWX! Update your code.
+		"source_regions":   d.Get("source_regions").(string),
+		"instance_filters": d.Get("instance_filters").(string),
+		"group_by":         d.Get("group_by").(string),
 		// "source_project":   d.Get("source_project_id").(int),
 		// "source_path":      d.Get("source_path").(string),
 	}, nil)
@@ -209,6 +233,11 @@ func setInventorySourceResourceData(d *schema.ResourceData, r *awx.InventorySour
 	d.Set("host_filter", r.HostFilter)
 	d.Set("update_cache_timeout", r.UpdateCacheTimeout)
 	d.Set("verbosity", r.Verbosity)
+	// obsolete schema added so terraform doesn't break
+	// these don't do anything in later versions of AWX! Update your code.
+	d.Set("source_regions", r.SourceRegions)
+	d.Set("instance_filters", r.InstanceFilters)
+	d.Set("group_by", r.GroupBy)
 	// d.Set("source_project_id", r.SourceProject)
 	// d.Set("source_path", r.SourcePath)
 
