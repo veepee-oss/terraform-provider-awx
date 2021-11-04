@@ -26,7 +26,7 @@ The following arguments are supported:
 * `description` - (Optional) 
 * `enabled_value` - (Optional) 
 * `enabled_var` - (Optional) 
-* `host_filter` - (Optional, ForceNew) 
+* `host_filter` - (Optional) 
 * `overwrite_vars` - (Optional) 
 * `overwrite` - (Optional) 
 * `source_vars` - (Optional) 

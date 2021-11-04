@@ -80,7 +80,6 @@ func resourceInventorySource() *schema.Resource {
 			"host_filter": &schema.Schema{
 				Type:     schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"update_cache_timeout": &schema.Schema{
 				Type:     schema.TypeInt,

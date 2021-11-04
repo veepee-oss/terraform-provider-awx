@@ -29,7 +29,7 @@ func InstallAWX() error {
 	return sh.Run(
 		"sh", "./installAwx.sh")
 }
-func GenDocumentuation() error {
+func GenDocumentation() error {
 	return tools.GenerateProviderCoumentation()
 }
 
