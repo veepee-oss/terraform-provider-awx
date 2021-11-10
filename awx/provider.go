@@ -13,7 +13,7 @@ import (
 func Provider() *schema.Provider {
 	return &schema.Provider{
 		Schema: map[string]*schema.Schema{
-			"hostname": &schema.Schema{
+			"hostname": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				DefaultFunc: schema.EnvDefaultFunc("AWX_HOSTNAME", "http://localhost"),
@@ -24,12 +24,12 @@ func Provider() *schema.Provider {
 				Default:     false,
 				Description: "Disable SSL verification of API calls",
 			},
-			"username": &schema.Schema{
+			"username": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				DefaultFunc: schema.EnvDefaultFunc("AWX_USERNAME", "admin"),
 			},
-			"password": &schema.Schema{
+			"password": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Sensitive:   true,

@@ -24,27 +24,27 @@ func dataSourceCredentialTypeByID() *schema.Resource {
 	return &schema.Resource{
 		ReadContext: dataSourceCredentialTypeByIDRead,
 		Schema: map[string]*schema.Schema{
-			"id": &schema.Schema{
+			"id": {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
-			"description": &schema.Schema{
+			"description": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
-			"kind": &schema.Schema{
+			"kind": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
-			"inputs": &schema.Schema{
+			"inputs": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
-			"injectors": &schema.Schema{
+			"injectors": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},

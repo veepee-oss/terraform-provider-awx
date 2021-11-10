@@ -27,23 +27,23 @@ func resourceCredentialInputSource() *schema.Resource {
 		UpdateContext: resourceCredentialInputSourceUpdate,
 		DeleteContext: resourceCredentialInputSourceDelete,
 		Schema: map[string]*schema.Schema{
-			"description": &schema.Schema{
+			"description": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"input_field_name": &schema.Schema{
+			"input_field_name": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"target": &schema.Schema{
+			"target": {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
-			"source": &schema.Schema{
+			"source": {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
-			"metadata": &schema.Schema{
+			"metadata": {
 				Type: schema.TypeMap,
 				Elem: &schema.Schema{
 					Type: schema.TypeString,

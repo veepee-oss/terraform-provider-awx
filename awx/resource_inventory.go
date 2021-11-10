@@ -40,30 +40,30 @@ func resourceInventory() *schema.Resource {
 		UpdateContext: resourceInventoryUpdate,
 
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"description": &schema.Schema{
+			"description": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
-			"organisation_id": &schema.Schema{
+			"organisation_id": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"kind": &schema.Schema{
+			"kind": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
-			"host_filter": &schema.Schema{
+			"host_filter": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
-			"variables": &schema.Schema{
+			"variables": {
 				Type:      schema.TypeString,
 				Optional:  true,
 				Default:   "",

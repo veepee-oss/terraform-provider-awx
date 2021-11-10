@@ -13,50 +13,50 @@ import (
 
 var workflowJobNodeSchema = map[string]*schema.Schema{
 
-	"extra_data": &schema.Schema{
+	"extra_data": {
 		Type:        schema.TypeString,
 		Optional:    true,
 		Default:     "",
 		Description: "",
 		StateFunc:   normalizeJsonYaml,
 	},
-	"workflow_job_template_node_id": &schema.Schema{
+	"workflow_job_template_node_id": {
 		Type:        schema.TypeInt,
 		Optional:    true,
 		Description: "",
 	},
-	"inventory_id": &schema.Schema{
+	"inventory_id": {
 		Type:        schema.TypeInt,
 		Optional:    true,
 		Description: "Inventory applied as a prompt, assuming job template prompts for inventory.",
 	},
-	"scm_branch": &schema.Schema{
+	"scm_branch": {
 		Type:     schema.TypeString,
 		Optional: true,
 		Default:  "",
 	},
-	"job_type": &schema.Schema{
+	"job_type": {
 		Type:     schema.TypeString,
 		Optional: true,
 		Default:  "run",
 	},
-	"job_tags": &schema.Schema{
+	"job_tags": {
 		Type:     schema.TypeString,
 		Optional: true,
 	},
-	"skip_tags": &schema.Schema{
+	"skip_tags": {
 		Type:     schema.TypeString,
 		Optional: true,
 	},
-	"limit": &schema.Schema{
+	"limit": {
 		Type:     schema.TypeString,
 		Optional: true,
 	},
-	"diff_mode": &schema.Schema{
+	"diff_mode": {
 		Type:     schema.TypeBool,
 		Optional: true,
 	},
-	"verbosity": &schema.Schema{
+	"verbosity": {
 		Type:     schema.TypeInt,
 		Optional: true,
 		Default:  0,
@@ -65,16 +65,16 @@ var workflowJobNodeSchema = map[string]*schema.Schema{
 	//	Type:     schema.TypeInt,
 	//	Required: true,
 	//},
-	"unified_job_template_id": &schema.Schema{
+	"unified_job_template_id": {
 		Type:     schema.TypeInt,
 		Required: true,
 	},
-	"all_parents_must_converge": &schema.Schema{
+	"all_parents_must_converge": {
 		Type:     schema.TypeBool,
 		Optional: true,
 		Default:  true,
 	},
-	"identifier": &schema.Schema{
+	"identifier": {
 		Type:     schema.TypeString,
 		Required: true,
 	},

@@ -45,7 +45,7 @@ func resourceJobTemplateLaunch() *schema.Resource {
 		DeleteContext: resourceJobDelete,
 
 		Schema: map[string]*schema.Schema{
-			"job_template_id": &schema.Schema{
+			"job_template_id": {
 				Type:        schema.TypeInt,
 				Required:    true,
 				Description: "Job template ID",

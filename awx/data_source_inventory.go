@@ -26,17 +26,17 @@ func dataSourceInventory() *schema.Resource {
 	return &schema.Resource{
 		ReadContext: dataSourceInventoriesRead,
 		Schema: map[string]*schema.Schema{
-			"id": &schema.Schema{
+			"id": {
 				Type:     schema.TypeInt,
 				Optional: true,
 				Computed: true,
 			},
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,
 			},
-			"organisation_id": &schema.Schema{
+			"organisation_id": {
 				Type:     schema.TypeInt,
 				Optional: true,
 				Computed: true,

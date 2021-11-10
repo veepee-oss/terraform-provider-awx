@@ -41,35 +41,35 @@ func resourceHost() *schema.Resource {
 		UpdateContext: resourceHostUpdate,
 
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"description": &schema.Schema{
+			"description": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
-			"inventory_id": &schema.Schema{
+			"inventory_id": {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
-			"group_ids": &schema.Schema{
+			"group_ids": {
 				Type:     schema.TypeList,
 				Elem:     &schema.Schema{Type: schema.TypeInt},
 				Optional: true,
 			},
-			"enabled": &schema.Schema{
+			"enabled": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  "",
 			},
-			"instance_id": &schema.Schema{
+			"instance_id": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
-			"variables": &schema.Schema{
+			"variables": {
 				Type:      schema.TypeString,
 				Optional:  true,
 				Default:   "",

@@ -24,20 +24,20 @@ func dataSourceCredentials() *schema.Resource {
 	return &schema.Resource{
 		ReadContext: dataSourceCredentialsRead,
 		Schema: map[string]*schema.Schema{
-			"credentials": &schema.Schema{
+			"credentials": {
 				Type:     schema.TypeList,
 				Computed: true,
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
-						"id": &schema.Schema{
+						"id": {
 							Type:     schema.TypeInt,
 							Computed: true,
 						},
-						"username": &schema.Schema{
+						"username": {
 							Type:     schema.TypeString,
 							Computed: true,
 						},
-						"kind": &schema.Schema{
+						"kind": {
 							Type:     schema.TypeString,
 							Computed: true,
 						},

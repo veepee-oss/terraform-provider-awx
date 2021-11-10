@@ -31,12 +31,12 @@ func resourceJobTemplateCredentials() *schema.Resource {
 
 		Schema: map[string]*schema.Schema{
 
-			"job_template_id": &schema.Schema{
+			"job_template_id": {
 				Type:     schema.TypeInt,
 				Required: true,
 				ForceNew: true,
 			},
-			"credential_id": &schema.Schema{
+			"credential_id": {
 				Type:     schema.TypeInt,
 				Required: true,
 				ForceNew: true,

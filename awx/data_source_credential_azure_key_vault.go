@@ -25,36 +25,36 @@ func dataSourceCredentialAzure() *schema.Resource {
 	return &schema.Resource{
 		ReadContext: dataSourceCredentialAzureRead,
 		Schema: map[string]*schema.Schema{
-			"credential_id": &schema.Schema{
+			"credential_id": {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
-			"description": &schema.Schema{
+			"description": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
-			"organisation_id": &schema.Schema{
+			"organisation_id": {
 				Type:     schema.TypeInt,
 				Computed: true,
 			},
-			"url": &schema.Schema{
+			"url": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
-			"client": &schema.Schema{
+			"client": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
-			"secret": &schema.Schema{
+			"secret": {
 				Type:      schema.TypeString,
 				Computed:  true,
 				Sensitive: true,
 			},
-			"tenant": &schema.Schema{
+			"tenant": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},

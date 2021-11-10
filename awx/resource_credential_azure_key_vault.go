@@ -27,32 +27,32 @@ func resourceCredentialAzureKeyVault() *schema.Resource {
 		UpdateContext: resourceCredentialAzureKeyVaultUpdate,
 		DeleteContext: CredentialsServiceDeleteByID,
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"description": &schema.Schema{
+			"description": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"organisation_id": &schema.Schema{
+			"organisation_id": {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
-			"url": &schema.Schema{
+			"url": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"client": &schema.Schema{
+			"client": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"secret": &schema.Schema{
+			"secret": {
 				Type:      schema.TypeString,
 				Required:  true,
 				Sensitive: true,
 			},
-			"tenant": &schema.Schema{
+			"tenant": {
 				Type:     schema.TypeString,
 				Required: true,
 			},

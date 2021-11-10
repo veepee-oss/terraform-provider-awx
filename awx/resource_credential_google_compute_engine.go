@@ -27,27 +27,27 @@ func resourceCredentialGoogleComputeEngine() *schema.Resource {
 		UpdateContext: resourceCredentialGoogleComputeEngineUpdate,
 		DeleteContext: CredentialsServiceDeleteByID,
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"description": &schema.Schema{
+			"description": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"organisation_id": &schema.Schema{
+			"organisation_id": {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
-			"username": &schema.Schema{
+			"username": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"project": &schema.Schema{
+			"project": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"ssh_key_data": &schema.Schema{
+			"ssh_key_data": {
 				Type:      schema.TypeString,
 				Required:  true,
 				Sensitive: true,

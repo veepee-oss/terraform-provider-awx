@@ -28,80 +28,80 @@ func resourceInventorySource() *schema.Resource {
 		DeleteContext: resourceInventorySourceDelete,
 
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"description": &schema.Schema{
+			"description": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"enabled_var": &schema.Schema{
+			"enabled_var": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"enabled_value": &schema.Schema{
+			"enabled_value": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"overwrite": &schema.Schema{
+			"overwrite": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  true,
 			},
-			"overwrite_vars": &schema.Schema{
+			"overwrite_vars": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  true,
 			},
-			"update_on_launch": &schema.Schema{
+			"update_on_launch": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  true,
 			},
-			"inventory_id": &schema.Schema{
+			"inventory_id": {
 				Type:     schema.TypeInt,
 				Required: true,
 				ForceNew: true,
 			},
-			"credential_id": &schema.Schema{
+			"credential_id": {
 				Type:     schema.TypeInt,
 				Optional: true,
 			},
-			"source": &schema.Schema{
+			"source": {
 				Type:     schema.TypeString,
 				Default:  "scm",
 				Optional: true,
 			},
-			"source_vars": &schema.Schema{
+			"source_vars": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"host_filter": &schema.Schema{
+			"host_filter": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"update_cache_timeout": &schema.Schema{
+			"update_cache_timeout": {
 				Type:     schema.TypeInt,
 				Optional: true,
 				Default:  30,
 			},
-			"verbosity": &schema.Schema{
+			"verbosity": {
 				Type:     schema.TypeInt,
 				Default:  1,
 				Optional: true,
 			},
 			// obsolete schema added so terraform doesn't break
 			// these don't do anything in later versions of AWX! Update your code.
-			"source_regions": &schema.Schema{
+			"source_regions": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"instance_filters": &schema.Schema{
+			"instance_filters": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"group_by": &schema.Schema{
+			"group_by": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},

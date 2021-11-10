@@ -27,33 +27,33 @@ func resourceCredentialSCM() *schema.Resource {
 		UpdateContext: resourceCredentialSCMUpdate,
 		DeleteContext: CredentialsServiceDeleteByID,
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"description": &schema.Schema{
+			"description": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"organisation_id": &schema.Schema{
+			"organisation_id": {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
-			"username": &schema.Schema{
+			"username": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"password": &schema.Schema{
+			"password": {
 				Type:      schema.TypeString,
 				Optional:  true,
 				Sensitive: true,
 			},
-			"ssh_key_data": &schema.Schema{
+			"ssh_key_data": {
 				Type:      schema.TypeString,
 				Optional:  true,
 				Sensitive: true,
 			},
-			"ssh_key_unlock": &schema.Schema{
+			"ssh_key_unlock": {
 				Type:      schema.TypeString,
 				Optional:  true,
 				Sensitive: true,

@@ -33,81 +33,81 @@ func resourceWorkflowJobTemplate() *schema.Resource {
 		DeleteContext: resourceWorkflowJobTemplateDelete,
 
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				Description: "Name of this workflow job template. (string, required)",
 			},
-			"description": &schema.Schema{
+			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "",
 				Description: "Optional description of this workflow job template.",
 			},
-			"variables": &schema.Schema{
+			"variables": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "",
 				Description: "",
 				StateFunc:   normalizeJsonYaml,
 			},
-			"organisation_id": &schema.Schema{
+			"organisation_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
 				Description: "The organization used to determine access to this template. (id, default=``)",
 			},
-			"survey_enabled": &schema.Schema{
+			"survey_enabled": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"allow_simultaneous": &schema.Schema{
+			"allow_simultaneous": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"ask_variables_on_launch": &schema.Schema{
+			"ask_variables_on_launch": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"inventory_id": &schema.Schema{
+			"inventory_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Description: "Inventory applied as a prompt, assuming job template prompts for inventory.",
 			},
-			"limit": &schema.Schema{
+			"limit": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
-			"scm_branch": &schema.Schema{
+			"scm_branch": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
-			"ask_inventory_on_launch": &schema.Schema{
+			"ask_inventory_on_launch": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"ask_scm_branch_on_launch": &schema.Schema{
+			"ask_scm_branch_on_launch": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"ask_limit_on_launch": &schema.Schema{
+			"ask_limit_on_launch": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"webhook_service": &schema.Schema{
+			"webhook_service": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
-			"webhook_credential": &schema.Schema{
+			"webhook_credential": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",

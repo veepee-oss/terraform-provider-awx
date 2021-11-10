@@ -28,21 +28,21 @@ func resourceInventoryGroup() *schema.Resource {
 		DeleteContext: resourceInventoryGroupDelete,
 
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"description": &schema.Schema{
+			"description": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
-			"inventory_id": &schema.Schema{
+			"inventory_id": {
 				Type:     schema.TypeString,
 				Optional: true,
 				ForceNew: true,
 			},
-			"variables": &schema.Schema{
+			"variables": {
 				Type:      schema.TypeString,
 				Optional:  true,
 				Default:   "",

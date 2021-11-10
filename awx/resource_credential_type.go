@@ -28,27 +28,27 @@ func resourceCredentialType() *schema.Resource {
 		UpdateContext: resourceCredentialTypeUpdate,
 		DeleteContext: CredentialTypeServiceDeleteByID,
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				Description: "Name of this credential type.",
 			},
-			"description": &schema.Schema{
+			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Description: "Optional description of this credential type.",
 			},
-			"kind": &schema.Schema{
+			"kind": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "cloud",
 				Description: "Choices cloud or net",
 			},
-			"inputs": &schema.Schema{
+			"inputs": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"injectors": &schema.Schema{
+			"injectors": {
 				Type:     schema.TypeString,
 				Required: true,
 			},

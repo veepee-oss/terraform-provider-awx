@@ -41,157 +41,157 @@ func resourceJobTemplate() *schema.Resource {
 		DeleteContext: resourceJobTemplateDelete,
 
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"description": &schema.Schema{
+			"description": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
 			// Run, Check, Scan
-			"job_type": &schema.Schema{
+			"job_type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				Description: "One of: run, check, scan",
 			},
-			"inventory_id": &schema.Schema{
+			"inventory_id": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"project_id": &schema.Schema{
+			"project_id": {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
-			"playbook": &schema.Schema{
+			"playbook": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
-			"forks": &schema.Schema{
+			"forks": {
 				Type:     schema.TypeInt,
 				Optional: true,
 				Default:  0,
 			},
-			"limit": &schema.Schema{
+			"limit": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
 			//0,1,2,3,4,5
-			"verbosity": &schema.Schema{
+			"verbosity": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
 				Description: "One of 0,1,2,3,4,5",
 			},
-			"extra_vars": &schema.Schema{
+			"extra_vars": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
-			"job_tags": &schema.Schema{
+			"job_tags": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
-			"force_handlers": &schema.Schema{
+			"force_handlers": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"skip_tags": &schema.Schema{
+			"skip_tags": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
-			"start_at_task": &schema.Schema{
+			"start_at_task": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
-			"timeout": &schema.Schema{
+			"timeout": {
 				Type:     schema.TypeInt,
 				Optional: true,
 				Default:  0,
 			},
-			"use_fact_cache": &schema.Schema{
+			"use_fact_cache": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"host_config_key": &schema.Schema{
+			"host_config_key": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
-			"ask_diff_mode_on_launch": &schema.Schema{
+			"ask_diff_mode_on_launch": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"ask_limit_on_launch": &schema.Schema{
+			"ask_limit_on_launch": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"ask_tags_on_launch": &schema.Schema{
+			"ask_tags_on_launch": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"ask_verbosity_on_launch": &schema.Schema{
+			"ask_verbosity_on_launch": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"ask_inventory_on_launch": &schema.Schema{
+			"ask_inventory_on_launch": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"ask_variables_on_launch": &schema.Schema{
+			"ask_variables_on_launch": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"ask_credential_on_launch": &schema.Schema{
+			"ask_credential_on_launch": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"survey_enabled": &schema.Schema{
+			"survey_enabled": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"become_enabled": &schema.Schema{
+			"become_enabled": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"diff_mode": &schema.Schema{
+			"diff_mode": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"ask_skip_tags_on_launch": &schema.Schema{
+			"ask_skip_tags_on_launch": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"allow_simultaneous": &schema.Schema{
+			"allow_simultaneous": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"custom_virtualenv": &schema.Schema{
+			"custom_virtualenv": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
-			"ask_job_type_on_launch": &schema.Schema{
+			"ask_job_type_on_launch": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,

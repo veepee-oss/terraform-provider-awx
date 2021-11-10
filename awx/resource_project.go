@@ -40,70 +40,70 @@ func resourceProject() *schema.Resource {
 		UpdateContext: resourceProjectUpdate,
 
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				Description: "Name of this project",
 			},
 
-			"description": &schema.Schema{
+			"description": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "",
 				Description: "Optional description of this project.",
 			},
 
-			"local_path": &schema.Schema{
+			"local_path": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "",
 				Description: "Local path (relative to PROJECTS_ROOT) containing playbooks and related files for this project.",
 			},
 
-			"scm_type": &schema.Schema{
+			"scm_type": {
 				Type:        schema.TypeString,
 				Required:    true,
 				Description: "One of \"\" (manual), git, hg, svn",
 			},
 
-			"scm_url": &schema.Schema{
+			"scm_url": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "",
 				Description: "",
 			},
-			"scm_credential_id": &schema.Schema{
+			"scm_credential_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Description: "Numeric ID of the scm used credential",
 			},
-			"scm_branch": &schema.Schema{
+			"scm_branch": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Default:     "",
 				Description: "Specific branch, tag or commit to checkout.",
 			},
-			"scm_clean": &schema.Schema{
+			"scm_clean": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"scm_delete_on_update": &schema.Schema{
+			"scm_delete_on_update": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"organisation_id": &schema.Schema{
+			"organisation_id": {
 				Type:        schema.TypeInt,
 				Required:    true,
 				Description: "Numeric ID of the project organization",
 			},
-			"scm_update_on_launch": &schema.Schema{
+			"scm_update_on_launch": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
 			},
-			"scm_update_cache_timeout": &schema.Schema{
+			"scm_update_cache_timeout": {
 				Type:     schema.TypeInt,
 				Optional: true,
 				Default:  0,
