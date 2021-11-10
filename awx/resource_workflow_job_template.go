@@ -6,7 +6,7 @@ Example Usage
 ```hcl
 resource "awx_workflow_job_template" "default" {
   name            = "workflow-job"
-  organisation_id = var.organisation_id
+  organization_id = var.organization_id
   inventory_id    = awx_inventory.default.id
 }
 ```
@@ -51,7 +51,7 @@ func resourceWorkflowJobTemplate() *schema.Resource {
 				Description: "",
 				StateFunc:   normalizeJsonYaml,
 			},
-			"organisation_id": {
+			"organization_id": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
@@ -133,7 +133,7 @@ func resourceWorkflowJobTemplateCreate(ctx context.Context, d *schema.ResourceDa
 	result, err := awxService.CreateWorkflowJobTemplate(map[string]interface{}{
 		"name":                     d.Get("name").(string),
 		"description":              d.Get("description").(string),
-		"organisation":             d.Get("organisation_id").(int),
+		"organization":             d.Get("organization_id").(int),
 		"inventory":                d.Get("inventory_id").(int),
 		"extra_vars":               d.Get("variables").(string),
 		"survey_enabled":           d.Get("survey_enabled").(bool),
@@ -179,7 +179,7 @@ func resourceWorkflowJobTemplateUpdate(ctx context.Context, d *schema.ResourceDa
 	_, err = awxService.UpdateWorkflowJobTemplate(id, map[string]interface{}{
 		"name":                     d.Get("name").(string),
 		"description":              d.Get("description").(string),
-		"organisation":             d.Get("organisation_id").(int),
+		"organization":             d.Get("organization_id").(int),
 		"inventory":                d.Get("inventory_id").(int),
 		"extra_vars":               d.Get("variables").(string),
 		"survey_enabled":           d.Get("survey_enabled").(bool),
@@ -245,7 +245,7 @@ func setWorkflowJobTemplateResourceData(d *schema.ResourceData, r *awx.WorkflowJ
 
 	d.Set("name", r.Name)
 	d.Set("description", r.Description)
-	d.Set("organisation_id", strconv.Itoa(r.Organization))
+	d.Set("organization_id", strconv.Itoa(r.Organization))
 	d.Set("inventory_id", strconv.Itoa(r.Inventory))
 	d.Set("survey_enabled", r.SurveyEnabled)
 	d.Set("allow_simultaneous", r.AllowSimultaneous)

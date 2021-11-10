@@ -15,7 +15,7 @@ description: |-
 ```hcl
 data "awx_inventory" "default" {
   name            = "private_services"
-  organisation_id = data.awx_organization.default.id
+  organization_id = data.awx_organization.default.id
 }
 ```
 
@@ -25,5 +25,5 @@ The following arguments are supported:
 
 * `id` - (Optional) 
 * `name` - (Optional) 
-* `organisation_id` - (Optional) 
+* `organization_id` - (Optional) 
 

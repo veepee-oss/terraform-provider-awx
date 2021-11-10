@@ -29,7 +29,7 @@ In addition to all arguments above, the following attributes are exported:
 * `client` - 
 * `description` - 
 * `name` - 
-* `organisation_id` - 
+* `organization_id` - 
 * `secret` - 
 * `tenant` - 
 * `url` - 

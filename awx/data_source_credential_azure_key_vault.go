@@ -37,7 +37,7 @@ func dataSourceCredentialAzure() *schema.Resource {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
-			"organisation_id": {
+			"organization_id": {
 				Type:     schema.TypeInt,
 				Computed: true,
 			},
@@ -79,7 +79,7 @@ func dataSourceCredentialAzureRead(ctx context.Context, d *schema.ResourceData, 
 
 	d.Set("name", cred.Name)
 	d.Set("description", cred.Description)
-	d.Set("organisation_id", cred.OrganizationID)
+	d.Set("organization_id", cred.OrganizationID)
 	d.Set("url", cred.Inputs["url"])
 	d.Set("client", cred.Inputs["client"])
 	d.Set("secret", d.Get("secret").(string))

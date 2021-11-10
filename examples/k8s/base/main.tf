@@ -5,7 +5,7 @@ resource "awx_organization" "default" {
 
 resource "awx_inventory" "default" {
   name            = "acc-test"
-  organisation_id = awx_organization.default.id
+  organization_id = awx_organization.default.id
   variables       = <<YAML
 ---
 system_supporters:
@@ -15,7 +15,7 @@ YAML
 
 
 resource "awx_credential_machine" "credential" {
-  organisation_id     = awx_organization.default.id
+  organization_id     = awx_organization.default.id
   name                = "acc-machine-credential"
   username            = "pi"
   ssh_key_data        = file("${path.module}/files/id_rsa")
@@ -24,7 +24,7 @@ resource "awx_credential_machine" "credential" {
 }
 
 resource "awx_credential_scm" "credential" {
-  organisation_id = awx_organization.default.id
+  organization_id = awx_organization.default.id
   name            = "acc-scm-credential"
   username        = "test"
   ssh_key_data    = file("${path.module}/files/id_rsa")
@@ -37,7 +37,7 @@ resource "awx_inventory_group" "default" {
 }
 resource "awx_workflow_job_template" "default" {
   name            = "acc-workflow-job"
-  organisation_id = awx_organization.default.id
+  organization_id = awx_organization.default.id
   inventory_id    = awx_inventory.default.id
 }
 resource "random_uuid" "workflow_node_k3s_uuid" {}
@@ -75,7 +75,7 @@ resource "awx_project" "project" {
   scm_url              = "https://github.com/nolte/ansible_playbook-baseline-k3s"
   scm_branch           = "feature/controllable-firelld"
   scm_update_on_launch = true
-  organisation_id      = awx_organization.default.id
+  organization_id      = awx_organization.default.id
 }
 
 ## give Certsmanger Time to Work

@@ -15,7 +15,7 @@ description: |-
 ```hcl
 data "awx_inventory" "default" {
   name            = "private_services"
-  organisation_id = data.awx_organization.default.id
+  organization_id = data.awx_organization.default.id
 }
 
 resource "awx_job_template" "baseconfig" {

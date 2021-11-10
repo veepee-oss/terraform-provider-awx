@@ -14,7 +14,7 @@ resource "awx_project" "base_service_config" {
   scm_url              = "https://github.com/nolte/ansible_playbook-baseline-online-server"
   scm_branch           = "feature/centos8-v2"
   scm_update_on_launch = true
-  organisation_id      = data.awx_organization.default.id
+  organization_id      = data.awx_organization.default.id
 }
 ```
 
@@ -93,7 +93,7 @@ func resourceProject() *schema.Resource {
 				Optional: true,
 				Default:  false,
 			},
-			"organisation_id": {
+			"organization_id": {
 				Type:        schema.TypeInt,
 				Required:    true,
 				Description: "Numeric ID of the project organization",
@@ -125,7 +125,7 @@ func resourceProjectCreate(ctx context.Context, d *schema.ResourceData, m interf
 	client := m.(*awx.AWX)
 	awxService := client.ProjectService
 
-	orgID := d.Get("organisation_id").(int)
+	orgID := d.Get("organization_id").(int)
 	projectName := d.Get("name").(string)
 	_, res, err := awxService.ListProjects(map[string]string{
 		"name":         projectName,
@@ -133,10 +133,10 @@ func resourceProjectCreate(ctx context.Context, d *schema.ResourceData, m interf
 	},
 	)
 	if err != nil {
-		return buildDiagnosticsMessage("Create: Fail to find Project", "Fail to find Project %s Organisation ID %v, %s", projectName, orgID, err.Error())
+		return buildDiagnosticsMessage("Create: Fail to find Project", "Fail to find Project %s Organization ID %v, %s", projectName, orgID, err.Error())
 	}
 	if len(res.Results) >= 1 {
-		return buildDiagnosticsMessage("Create: Allways exist", "Project with name %s  already exists in the Organisation ID %v", projectName, orgID)
+		return buildDiagnosticsMessage("Create: Allways exist", "Project with name %s  already exists in the Organization ID %v", projectName, orgID)
 	}
 	credentials := ""
 	if d.Get("scm_credential_id").(int) > 0 {
@@ -151,14 +151,14 @@ func resourceProjectCreate(ctx context.Context, d *schema.ResourceData, m interf
 		"scm_branch":           d.Get("scm_branch").(string),
 		"scm_clean":            d.Get("scm_clean").(bool),
 		"scm_delete_on_update": d.Get("scm_delete_on_update").(bool),
-		"organization":         d.Get("organisation_id").(int),
+		"organization":         d.Get("organization_id").(int),
 		"credential":           credentials,
 
 		"scm_update_on_launch":     d.Get("scm_update_on_launch").(bool),
 		"scm_update_cache_timeout": d.Get("scm_update_cache_timeout").(int),
 	}, map[string]string{})
 	if err != nil {
-		return buildDiagnosticsMessage("Create: Project not created", "Project with name %s  in the Organisation ID %v not created, %s", projectName, orgID, err.Error())
+		return buildDiagnosticsMessage("Create: Project not created", "Project with name %s  in the Organization ID %v not created, %s", projectName, orgID, err.Error())
 	}
 
 	d.SetId(strconv.Itoa(result.ID))
@@ -187,7 +187,7 @@ func resourceProjectUpdate(ctx context.Context, d *schema.ResourceData, m interf
 		"scm_clean":                d.Get("scm_clean").(bool),
 		"scm_delete_on_update":     d.Get("scm_delete_on_update").(bool),
 		"credential":               credentials,
-		"organization":             d.Get("organisation_id").(int),
+		"organization":             d.Get("organization_id").(int),
 		"scm_update_on_launch":     d.Get("scm_update_on_launch").(bool),
 		"scm_update_cache_timeout": d.Get("scm_update_cache_timeout").(int),
 	}, map[string]string{})
@@ -270,7 +270,7 @@ func setProjectResourceData(d *schema.ResourceData, r *awx.Project) *schema.Reso
 	d.Set("scm_branch", r.ScmBranch)
 	d.Set("scm_clean", r.ScmClean)
 	d.Set("scm_delete_on_update", r.ScmDeleteOnUpdate)
-	d.Set("organisation_id", r.Organization)
+	d.Set("organization_id", r.Organization)
 
 	id, err := strconv.Atoi(r.Credential)
 	if err == nil {
