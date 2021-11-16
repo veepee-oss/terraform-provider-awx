@@ -10,7 +10,7 @@ resource "awx_project" "myproj" {
 }
 
 data "awx_project_role" "proj_admins" {
-  name       = "Admins"
+  name       = "Admin"
   project_id = resource.awx_project.myproj.id
 }
 ```
