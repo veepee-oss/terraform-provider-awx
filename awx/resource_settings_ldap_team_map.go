@@ -27,12 +27,15 @@ package awx
 import (
 	"context"
 	"encoding/json"
+	"sync"
 	"time"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	awx "github.com/mrcrilly/goawx/client"
 )
+
+var ldapTeamMapAccessMutex sync.Mutex
 
 func resourceSettingsLDAPTeamMap() *schema.Resource {
 	return &schema.Resource{
@@ -88,6 +91,10 @@ type team_map_entry struct {
 type teammap map[string]team_map_entry
 
 func resourceSettingsLDAPTeamMapCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+
+	ldapTeamMapAccessMutex.Lock()
+	defer ldapTeamMapAccessMutex.Unlock()
+
 	client := m.(*awx.AWX)
 	awxService := client.SettingService
 
@@ -147,6 +154,10 @@ func resourceSettingsLDAPTeamMapCreate(ctx context.Context, d *schema.ResourceDa
 }
 
 func resourceSettingsLDAPTeamMapUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+
+	ldapTeamMapAccessMutex.Lock()
+	defer ldapTeamMapAccessMutex.Unlock()
+
 	client := m.(*awx.AWX)
 	awxService := client.SettingService
 
@@ -245,6 +256,10 @@ func resourceSettingsLDAPTeamMapRead(ctx context.Context, d *schema.ResourceData
 }
 
 func resourceSettingsLDAPTeamMapDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+
+	ldapTeamMapAccessMutex.Lock()
+	defer ldapTeamMapAccessMutex.Unlock()
+
 	var diags diag.Diagnostics
 	client := m.(*awx.AWX)
 	awxService := client.SettingService
