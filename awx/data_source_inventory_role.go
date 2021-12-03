@@ -76,7 +76,7 @@ func dataSourceInventoryRoleRead(ctx context.Context, d *schema.ResourceData, m 
 	if roleID, okID := d.GetOk("id"); okID {
 		id := roleID.(int)
 		for _, v := range roleslist {
-			if id == v.ID {
+			if v != nil && id == v.ID {
 				d = setInventoryRoleData(d, v)
 				return diags
 			}
@@ -87,7 +87,7 @@ func dataSourceInventoryRoleRead(ctx context.Context, d *schema.ResourceData, m 
 		name := roleName.(string)
 
 		for _, v := range roleslist {
-			if name == v.Name {
+			if v != nil && name == v.Name {
 				d = setInventoryRoleData(d, v)
 				return diags
 			}

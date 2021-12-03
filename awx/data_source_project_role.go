@@ -77,7 +77,7 @@ func dataSourceProjectRolesRead(ctx context.Context, d *schema.ResourceData, m i
 	if roleID, okID := d.GetOk("id"); okID {
 		id := roleID.(int)
 		for _, v := range roleslist {
-			if id == v.ID {
+			if v != nil && id == v.ID {
 				d = setProjectRoleData(d, v)
 				return diags
 			}
@@ -88,7 +88,7 @@ func dataSourceProjectRolesRead(ctx context.Context, d *schema.ResourceData, m i
 		name := roleName.(string)
 
 		for _, v := range roleslist {
-			if name == v.Name {
+			if v != nil && name == v.Name {
 				d = setProjectRoleData(d, v)
 				return diags
 			}
