@@ -240,12 +240,23 @@ func resourceSettingsLDAPTeamMapRead(ctx context.Context, d *schema.ResourceData
 		)
 	}
 
+	/*return buildDiagnosticsMessage(
+		"returning as desired",
+		"Data: %v %T", mapdef.UserDNs, mapdef.UserDNs,
+	)*/
+
 	var users []string
 	switch tt := mapdef.UserDNs.(type) {
 	case string:
 		users = []string{tt}
 	case []string:
 		users = tt
+	case []interface{}:
+		for _, v := range tt {
+			if dn, ok := v.(string); ok {
+				users = append(users, dn)
+			}
+		}
 	}
 
 	d.Set("name", d.Id())
