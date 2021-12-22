@@ -136,7 +136,7 @@ func resourceProjectCreate(ctx context.Context, d *schema.ResourceData, m interf
 		return buildDiagnosticsMessage("Create: Fail to find Project", "Fail to find Project %s Organization ID %v, %s", projectName, orgID, err.Error())
 	}
 	if len(res.Results) >= 1 {
-		return buildDiagnosticsMessage("Create: Allways exist", "Project with name %s  already exists in the Organization ID %v", projectName, orgID)
+		return buildDiagnosticsMessage("Create: Always exist", "Project with name %s  already exists in the Organization ID %v", projectName, orgID)
 	}
 	credentials := ""
 	if d.Get("scm_credential_id").(int) > 0 {

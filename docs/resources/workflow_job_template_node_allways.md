@@ -1,12 +1,12 @@
 ---
 layout: "awx"
-page_title: "AWX: awx_workflow_job_template_node_allways"
-sidebar_current: "docs-awx-resource-workflow_job_template_node_allways"
+page_title: "AWX: awx_workflow_job_template_node_always"
+sidebar_current: "docs-awx-resource-workflow_job_template_node_always"
 description: |-
   *TBD*
 ---
 
-# awx_workflow_job_template_node_allways
+# awx_workflow_job_template_node_always
 
 *TBD*
 
@@ -15,7 +15,7 @@ description: |-
 ```hcl
 resource "random_uuid" "workflow_node_k3s_uuid" {}
 
-resource "awx_workflow_job_template_node_allways" "k3s" {
+resource "awx_workflow_job_template_node_always" "k3s" {
   workflow_job_template_node_id = awx_workflow_job_template_node.default.id
   unified_job_template_id       = awx_job_template.k3s.id
   inventory_id                  = awx_inventory.default.id
