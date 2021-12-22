@@ -88,14 +88,13 @@ func resourceWorkflowJobTemplateNode() *schema.Resource {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
-			"success_nodes": &schema.Schema{
-				Type: schema.TypeList,
-				Elem: &schema.Schema{
-					Type: schema.TypeInt,
-				},
-				Optional: true,
-				//ConflictsWith: []string{"failure_nodes"},
-			},
+			//"success_nodes": &schema.Schema{
+			//	Type: schema.TypeList,
+			//	Elem: &schema.Schema{
+			//		Type: schema.TypeInt,
+			//	},
+			//	Optional: true,
+			//},
 			//"failure_nodes": &schema.Schema{
 			//	Type: schema.TypeList,
 			//	Elem: &schema.Schema{
@@ -151,7 +150,7 @@ func resourceWorkflowJobTemplateNodeCreate(ctx context.Context, d *schema.Resour
 		"workflow_job_template": d.Get("workflow_job_template_id").(int),
 		"unified_job_template":  d.Get("unified_job_template_id").(int),
 		//"failure_nodes":         d.Get("failure_nodes").([]interface{}),
-		"success_nodes": d.Get("success_nodes").([]interface{}),
+		//"success_nodes": d.Get("success_nodes").([]interface{}),
 		//"always_nodes":          d.Get("always_nodes").([]interface{}),
 
 		"all_parents_must_converge": d.Get("all_parents_must_converge").(bool),
@@ -199,7 +198,7 @@ func resourceWorkflowJobTemplateNodeUpdate(ctx context.Context, d *schema.Resour
 		"workflow_job_template": d.Get("workflow_job_template_id").(int),
 		"unified_job_template":  d.Get("unified_job_template_id").(int),
 		//"failure_nodes":             d.Get("failure_nodes").([]interface{}),
-		"success_nodes": d.Get("success_nodes").([]interface{}),
+		//"success_nodes": d.Get("success_nodes").([]interface{}),
 		//"always_nodes":              d.Get("always_nodes").([]interface{}),
 		"all_parents_must_converge": d.Get("all_parents_must_converge").(bool),
 		"identifier":                d.Get("identifier").(string),
