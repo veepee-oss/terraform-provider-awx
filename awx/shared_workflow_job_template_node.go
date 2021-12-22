@@ -22,7 +22,7 @@ var workflowJobNodeSchema = map[string]*schema.Schema{
 	},
 	"workflow_job_template_node_id": {
 		Type:        schema.TypeInt,
-		Optional:    true,
+		Required:    true,
 		Description: "",
 	},
 	"inventory_id": {
@@ -107,7 +107,7 @@ func createNodeForWorkflowJob(awxService *awx.WorkflowJobTemplateNodeStepService
 		diags = append(diags, diag.Diagnostic{
 			Severity: diag.Error,
 			Summary:  "Unable to create WorkflowJobTemplateNodeSuccess",
-			Detail:   fmt.Sprintf("WorkflowJobTemplateNodeSuccess with JobTemplateID %d faild to create %s", d.Get("unified_job_template_id").(int), err.Error()),
+			Detail:   fmt.Sprintf("WorkflowJobTemplateNodeSuccess with JobTemplateID %d failed to create %s", d.Get("unified_job_template_id").(int), err.Error()),
 		})
 		return diags
 	}

@@ -28,7 +28,8 @@ resource "awx_workflow_job_template_node_always" "k3s" {
 The following arguments are supported:
 
 * `identifier` - (Required) 
-* `unified_job_template_id` - (Required) 
+* `unified_job_template_id` - (Required)
+* `workflow_job_template_node_id` - (Required) 
 * `all_parents_must_converge` - (Optional) 
 * `diff_mode` - (Optional) 
 * `extra_data` - (Optional) 
@@ -38,6 +39,5 @@ The following arguments are supported:
 * `limit` - (Optional) 
 * `scm_branch` - (Optional) 
 * `skip_tags` - (Optional) 
-* `verbosity` - (Optional) 
-* `workflow_job_template_node_id` - (Optional) 
+* `verbosity` - (Optional)  
 
