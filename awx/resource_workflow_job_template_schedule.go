@@ -50,11 +50,11 @@ func resourceWorkflowJobTemplateSchedule() *schema.Resource {
 			},
 			"description": {
 				Type:     schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"enabled": {
 				Type:     schema.TypeBool,
-				Required: false,
+				Optional: true,
 				Default:  true,
 			},
 		},
