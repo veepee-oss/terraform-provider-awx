@@ -313,7 +313,7 @@ func resourceJobTemplateUpdate(ctx context.Context, d *schema.ResourceData, m in
 		diags = append(diags, diag.Diagnostic{
 			Severity: diag.Error,
 			Summary:  "Unable to update JobTemplate",
-			Detail:   fmt.Sprintf("JobTemplate with name %s in the project id %d faild to update %s", d.Get("name").(string), d.Get("project_id").(int), err.Error()),
+			Detail:   fmt.Sprintf("JobTemplate with name %s in the project id %d failed to update %s", d.Get("name").(string), d.Get("project_id").(int), err.Error()),
 		})
 		return diags
 	}

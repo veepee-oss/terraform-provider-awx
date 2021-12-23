@@ -70,7 +70,7 @@ func buildDiagDeleteFail(tfMethode, details string) diag.Diagnostics {
 	)
 }
 func buildDiagDeleteFailSummary(tfMethode string) string {
-	return fmt.Sprintf("%s delete faild", tfMethode)
+	return fmt.Sprintf("%s delete failed", tfMethode)
 }
 func buildDiagDeleteFailDetails(tfMethode, detailsString string) string {
 	return fmt.Sprintf("Fail to delete %s, %s", tfMethode, detailsString)

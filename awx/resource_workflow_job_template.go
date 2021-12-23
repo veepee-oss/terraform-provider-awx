@@ -152,7 +152,7 @@ func resourceWorkflowJobTemplateCreate(ctx context.Context, d *schema.ResourceDa
 		diags = append(diags, diag.Diagnostic{
 			Severity: diag.Error,
 			Summary:  "Unable to create WorkflowJobTemplate",
-			Detail:   fmt.Sprintf("WorkflowJobTemplate with name %s faild to create %s", d.Get("name").(string), err.Error()),
+			Detail:   fmt.Sprintf("WorkflowJobTemplate with name %s failed to create %s", d.Get("name").(string), err.Error()),
 		})
 		return diags
 	}
@@ -197,7 +197,7 @@ func resourceWorkflowJobTemplateUpdate(ctx context.Context, d *schema.ResourceDa
 		diags = append(diags, diag.Diagnostic{
 			Severity: diag.Error,
 			Summary:  "Unable to update WorkflowJobTemplate",
-			Detail:   fmt.Sprintf("WorkflowJobTemplate with name %s in the project id %d faild to update %s", d.Get("name").(string), d.Get("project_id").(int), err.Error()),
+			Detail:   fmt.Sprintf("WorkflowJobTemplate with name %s in the project id %d failed to update %s", d.Get("name").(string), d.Get("project_id").(int), err.Error()),
 		})
 		return diags
 	}
