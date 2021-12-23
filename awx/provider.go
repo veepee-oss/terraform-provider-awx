@@ -5,9 +5,9 @@ import (
 	"crypto/tls"
 	"net/http"
 
+	awx "github.com/denouche/goawx/client"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	awx "github.com/mrcrilly/goawx/client"
 )
 
 func Provider() *schema.Provider {
@@ -53,6 +53,7 @@ func Provider() *schema.Provider {
 			"awx_job_template_launch":                resourceJobTemplateLaunch(),
 			"awx_organization":                       resourceOrganization(),
 			"awx_project":                            resourceProject(),
+			"awx_schedule":                           resourceSchedule(),
 			"awx_settings_ldap_team_map":             resourceSettingsLDAPTeamMap(),
 			"awx_team":                               resourceTeam(),
 			"awx_workflow_job_template_node_always":  resourceWorkflowJobTemplateNodeAlways(),
@@ -60,6 +61,7 @@ func Provider() *schema.Provider {
 			"awx_workflow_job_template_node_success": resourceWorkflowJobTemplateNodeSuccess(),
 			"awx_workflow_job_template_node":         resourceWorkflowJobTemplateNode(),
 			"awx_workflow_job_template":              resourceWorkflowJobTemplate(),
+			"awx_workflow_job_template_schedule":     resourceWorkflowJobTemplateSchedule(),
 		},
 		DataSourcesMap: map[string]*schema.Resource{
 			"awx_credential_azure_key_vault": dataSourceCredentialAzure(),
@@ -73,6 +75,7 @@ func Provider() *schema.Provider {
 			"awx_organization":               dataSourceOrganization(),
 			"awx_project":                    dataSourceProject(),
 			"awx_project_role":               dataSourceProjectRole(),
+			"awx_schedule":                   dataSourceSchedule(),
 			"awx_workflow_job_template":      dataSourceWorkflowJobTemplate(),
 			"awx_team":                       dataSourceTeam(),
 		},

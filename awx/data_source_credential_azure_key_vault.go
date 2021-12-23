@@ -16,9 +16,9 @@ import (
 	"strconv"
 	"time"
 
+	awx "github.com/denouche/goawx/client"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	awx "github.com/mrcrilly/goawx/client"
 )
 
 func dataSourceCredentialAzure() *schema.Resource {

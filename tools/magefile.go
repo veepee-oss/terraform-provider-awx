@@ -1,4 +1,5 @@
-//+build mage
+//go:build mage
+// +build mage
 
 package main
 
@@ -9,7 +10,7 @@ import (
 	"github.com/magefile/mage/mg"
 	"github.com/magefile/mage/sh"
 
-	tools "github.com/mrcrilly/terraform-provider-awx/tools"
+	tools "github.com/denouche/terraform-provider-awx/tools"
 
 	// mage:import
 	"github.com/nolte/plumbing/cmd/kind"

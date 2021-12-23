@@ -18,9 +18,9 @@ import (
 	"log"
 	"strconv"
 
+	awx "github.com/denouche/goawx/client"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	awx "github.com/mrcrilly/goawx/client"
 )
 
 func resourceOrganization() *schema.Resource {
@@ -77,7 +77,7 @@ func resourceOrganizationsCreate(ctx context.Context, d *schema.ResourceData, m 
 		"custom_virtualenv": d.Get("description").(string),
 	}, map[string]string{})
 	if err != nil {
-		log.Printf("Fail to Create Template %v", err)
+		log.Printf("Fail to Create Organization %v", err)
 		diags = append(diags, diag.Diagnostic{
 			Severity: diag.Error,
 			Summary:  "Unable to create Organizations",

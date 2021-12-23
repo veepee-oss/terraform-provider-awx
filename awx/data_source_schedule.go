@@ -4,8 +4,8 @@
 Example Usage
 
 ```hcl
-data "awx_organization" "default" {
-  name = "Default"
+data "awx_schedule" "default" {
+  name            = "private_services"
 }
 ```
 
@@ -21,9 +21,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
-func dataSourceOrganization() *schema.Resource {
+func dataSourceSchedule() *schema.Resource {
 	return &schema.Resource{
-		ReadContext: dataSourceOrganizationsRead,
+		ReadContext: dataSourceSchedulesRead,
 		Schema: map[string]*schema.Schema{
 			"id": {
 				Type:     schema.TypeInt,
@@ -35,11 +35,16 @@ func dataSourceOrganization() *schema.Resource {
 				Optional: true,
 				Computed: true,
 			},
+			"organization_id": {
+				Type:     schema.TypeInt,
+				Optional: true,
+				Computed: true,
+			},
 		},
 	}
 }
 
-func dataSourceOrganizationsRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+func dataSourceSchedulesRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	var diags diag.Diagnostics
 	client := m.(*awx.AWX)
 	params := make(map[string]string)
@@ -47,35 +52,34 @@ func dataSourceOrganizationsRead(ctx context.Context, d *schema.ResourceData, m 
 		params["name"] = groupName.(string)
 	}
 
-	if groupID, okGroupID := d.GetOk("id"); okGroupID {
+	if groupID, okID := d.GetOk("id"); okID {
 		params["id"] = strconv.Itoa(groupID.(int))
 	}
 
 	if len(params) == 0 {
 		return buildDiagnosticsMessage(
 			"Get: Missing Parameters",
-			"Please use one of the selectors (name or group_id)",
+			"Please use one of the selectors (name or id)",
 		)
-		return diags
 	}
-	organizations, _, err := client.OrganizationsService.ListOrganizations(params)
+
+	schedules, _, err := client.ScheduleService.List(params)
 	if err != nil {
 		return buildDiagnosticsMessage(
-			"Get: Fail to fetch Inventory Group",
+			"Get: Fail to fetch Schedule Group",
 			"Fail to find the group got: %s",
 			err.Error(),
 		)
 	}
-	if len(organizations) > 1 {
+	if len(schedules) > 1 {
 		return buildDiagnosticsMessage(
 			"Get: find more than one Element",
 			"The Query Returns more than one Group, %d",
-			len(organizations),
+			len(schedules),
 		)
-		return diags
 	}
 
-	organization := organizations[0]
-	d = setOrganizationsResourceData(d, organization)
+	schedule := schedules[0]
+	d = setScheduleResourceData(d, schedule)
 	return diags
 }
