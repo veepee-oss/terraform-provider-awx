@@ -65,7 +65,7 @@ func resourceScheduleCreate(ctx context.Context, d *schema.ResourceData, m inter
 
 	result, err := awxService.Create(map[string]interface{}{
 		"name":                 d.Get("name").(string),
-		"rrule":                d.Get("rrule").(int),
+		"rrule":                d.Get("rrule").(string),
 		"unified_job_template": d.Get("unified_job_template_id").(int),
 		"description":          d.Get("description").(string),
 		"enabled":              d.Get("enabled").(bool),
@@ -101,7 +101,7 @@ func resourceScheduleUpdate(ctx context.Context, d *schema.ResourceData, m inter
 
 	_, err = awxService.Update(id, map[string]interface{}{
 		"name":                 d.Get("name").(string),
-		"rrule":                d.Get("rrule").(int),
+		"rrule":                d.Get("rrule").(string),
 		"unified_job_template": d.Get("unified_job_template_id").(int),
 		"description":          d.Get("description").(string),
 		"enabled":              d.Get("enabled").(bool),

@@ -70,7 +70,7 @@ func resourceWorkflowJobTemplateScheduleCreate(ctx context.Context, d *schema.Re
 
 	result, err := awxService.CreateWorkflowJobTemplateSchedule(workflowJobTemplateID, map[string]interface{}{
 		"name":        d.Get("name").(string),
-		"rrule":       d.Get("rrule").(int),
+		"rrule":       d.Get("rrule").(string),
 		"description": d.Get("description").(string),
 		"enabled":     d.Get("enabled").(bool),
 	}, map[string]string{})
