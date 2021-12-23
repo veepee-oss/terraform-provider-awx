@@ -54,6 +54,10 @@ func resourceSchedule() *schema.Resource {
 				Optional: true,
 				Default:  true,
 			},
+			"inventory": {
+				Type:     schema.TypeInt,
+				Optional: true,
+			},
 		},
 	}
 }
@@ -69,6 +73,7 @@ func resourceScheduleCreate(ctx context.Context, d *schema.ResourceData, m inter
 		"unified_job_template": d.Get("unified_job_template_id").(int),
 		"description":          d.Get("description").(string),
 		"enabled":              d.Get("enabled").(bool),
+		"inventory":            d.Get("inventory").(int),
 	}, map[string]string{})
 	if err != nil {
 		log.Printf("Fail to Create Schedule %v", err)
@@ -105,6 +110,7 @@ func resourceScheduleUpdate(ctx context.Context, d *schema.ResourceData, m inter
 		"unified_job_template": d.Get("unified_job_template_id").(int),
 		"description":          d.Get("description").(string),
 		"enabled":              d.Get("enabled").(bool),
+		"inventory":            d.Get("inventory").(int),
 	}, map[string]string{})
 	if err != nil {
 		diags = append(diags, diag.Diagnostic{
@@ -160,6 +166,7 @@ func setScheduleResourceData(d *schema.ResourceData, r *awx.Schedule) *schema.Re
 	d.Set("unified_job_template_id", r.UnifiedJobTemplate)
 	d.Set("description", r.Description)
 	d.Set("enabled", r.Enabled)
+	d.Set("inventory", r.Inventory)
 	d.SetId(strconv.Itoa(r.ID))
 	return d
 }

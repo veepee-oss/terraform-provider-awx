@@ -25,8 +25,9 @@ resource "awx_workflow_job_template_schedule" "default" {
 
 The following arguments are supported:
 
-* `workflow_job_template_id` - (Required)
 * `name` - (Required)
 * `rrule` - (Required)
+* `workflow_job_template_id` - (Required)
 * `description` - (Optional)
+* `inventory` - (Optional)
 * `timezone` - (Optional)

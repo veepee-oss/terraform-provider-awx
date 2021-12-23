@@ -25,7 +25,8 @@ resource "awx_schedule" "default" {
 The following arguments are supported:
 
 * `name` - (Required)
-* `rrule` - (Required)
 * `unified_job_template_id` - (Required)
+* `rrule` - (Required)
 * `description` - (Optional)
+* `inventory` - (Optional)
 * `timezone` - (Optional)

@@ -57,6 +57,10 @@ func resourceWorkflowJobTemplateSchedule() *schema.Resource {
 				Optional: true,
 				Default:  true,
 			},
+			"inventory": {
+				Type:     schema.TypeInt,
+				Optional: true,
+			},
 		},
 	}
 }
@@ -73,6 +77,7 @@ func resourceWorkflowJobTemplateScheduleCreate(ctx context.Context, d *schema.Re
 		"rrule":       d.Get("rrule").(string),
 		"description": d.Get("description").(string),
 		"enabled":     d.Get("enabled").(bool),
+		"inventory":   d.Get("inventory").(int),
 	}, map[string]string{})
 	if err != nil {
 		log.Printf("Fail to Create Schedule for WorkflowJobTemplate %d: %v", workflowJobTemplateID, err)
