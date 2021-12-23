@@ -1,3 +1,10 @@
+## [0.10.7](https://github.com/denouche/terraform-provider-awx/compare/v0.10.6...v0.10.7) (2021-12-23)
+
+
+### Bug Fixes
+
+* add missing unified_job_template_id ([72d1deb](https://github.com/denouche/terraform-provider-awx/commit/72d1deb810d8618158bb48cea924959961495163))
+
 ## [0.10.6](https://github.com/denouche/terraform-provider-awx/compare/v0.10.5...v0.10.6) (2021-12-23)
 
 
