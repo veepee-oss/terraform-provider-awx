@@ -1,6 +1,3 @@
-# This GitHub action can publish assets for release when a tag is created.
-# Currently its setup to run on any tag that matches the pattern "v*" (ie. v0.1.0).
-#
 # This uses an action (crazy-max/ghaction-import-gpg) that assumes you set your
 # private key in the `GPG_PRIVATE_KEY` secret and passphrase in the `PASSPHRASE`
 # secret. If you would rather own your own GPG handling, please fork this action
@@ -9,37 +6,100 @@
 # You will need to pass the `--batch` flag to `gpg` in your signing step
 # in `goreleaser` to indicate this is being used in a non-interactive mode.
 #
-name: release
+name: Release
+
 on:
+  workflow_dispatch:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - 'main'
+    tags-ignore:
+      - '**'
+
 jobs:
-  goreleaser:
+
+  release:
+
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v2.3.4
-      -
-        name: Unshallow
-        run: git fetch --prune --unshallow
-      -
-        name: Set up Go
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+
+      - name: Releaser configuration
+        run: |
+          echo '{
+                   "tagFormat":"v${version}",
+                   "plugins": [
+                      [
+                        "@semantic-release/commit-analyzer",
+                        {
+                          "preset": "angular",
+                          "releaseRules": [
+                            {"type": "refactor", "release": "patch"},
+                            {"type": "chore", "release": "patch"}
+                          ]
+                        }
+                      ],
+                      "@semantic-release/release-notes-generator",
+                      [
+                        "@semantic-release/changelog",
+                        {
+                          "changelogFile": "CHANGELOG.md"
+                        }
+                      ],
+                      [
+                        "@semantic-release/git",
+                        {
+                          "assets": ["CHANGELOG.md"],
+                          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+                        }
+                      ],
+                      "@semantic-release/github"
+                   ]
+                }
+          '> .releaserc
+
+      - name: Release
+        id: release
+        uses: cycjimmy/semantic-release-action@5982a02995853159735cb838992248c4f0f16166 # v2
+        with:
+          semantic_version: 17.4.7
+          branches: |
+            [
+              'main'
+            ]
+          extra_plugins: |
+            @semantic-release/commit-analyzer@8.0.1
+            @semantic-release/release-notes-generator@9.0.3
+            @semantic-release/changelog@5.0.1
+            @semantic-release/git@9.0.1
+            @semantic-release/github@7.2.3
+        env:
+          GIT_CREDENTIALS: git:${{ secrets.PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Go
+        if: steps.release.outputs.new_release_published == 'true'
         uses: actions/setup-go@v2
         with:
           go-version: 1.17
-      -
-        name: Import GPG key
+
+      - name: Import GPG key
+        if: steps.release.outputs.new_release_published == 'true'
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@v4
         with:
           # These secrets will need to be configured for the repository:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
-      -
-        name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v2.7.0
+
+      - name: Run GoReleaser
+        if: steps.release.outputs.new_release_published == 'true'
+        uses: goreleaser/goreleaser-action@v2.8.0
         with:
           version: latest
           args: release --rm-dist
