@@ -46,9 +46,6 @@ func resourceNotificationTemplate() *schema.Resource {
 			"notification_type": {
 				Type:     schema.TypeString,
 				Optional: true,
-				ExactlyOneOf: []string{
-					"email", "grafana", "irc", "mattermost", "pagerduty", "rocketchat", "slack", "twilio", "webhook",
-				},
 			},
 			"notification_configuration": {
 				Type:     schema.TypeMap,
