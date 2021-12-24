@@ -1,3 +1,10 @@
+## [0.11.1](https://github.com/denouche/terraform-provider-awx/compare/v0.11.0...v0.11.1) (2021-12-24)
+
+
+### Bug Fixes
+
+* notification_template schema ([4b28594](https://github.com/denouche/terraform-provider-awx/commit/4b2859405fc56bb7a09320f826862cbaa05a6d32))
+
 # [0.11.0](https://github.com/denouche/terraform-provider-awx/compare/v0.10.7...v0.11.0) (2021-12-24)
 
 
