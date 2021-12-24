@@ -48,8 +48,9 @@ func resourceNotificationTemplate() *schema.Resource {
 				Optional: true,
 			},
 			"notification_configuration": {
-				Type:     schema.TypeMap,
+				Type:     schema.TypeString,
 				Optional: true,
+				Default:  "",
 			},
 		},
 	}
@@ -65,7 +66,7 @@ func resourceNotificationTemplateCreate(ctx context.Context, d *schema.ResourceD
 		"description":                d.Get("description").(string),
 		"organization":               d.Get("organization_id").(string),
 		"notification_type":          d.Get("notification_type").(string),
-		"notification_configuration": d.Get("notification_configuration").(map[string]interface{}),
+		"notification_configuration": d.Get("notification_configuration").(string),
 	}, map[string]string{})
 	if err != nil {
 		log.Printf("Fail to Create notification_template %v", err)
@@ -101,7 +102,7 @@ func resourceNotificationTemplateUpdate(ctx context.Context, d *schema.ResourceD
 		"description":                d.Get("description").(string),
 		"organization":               d.Get("organization_id").(string),
 		"notification_type":          d.Get("notification_type").(string),
-		"notification_configuration": d.Get("notification_configuration").(map[string]interface{}),
+		"notification_configuration": d.Get("notification_configuration").(string),
 	}, map[string]string{})
 	if err != nil {
 		diags = append(diags, diag.Diagnostic{
