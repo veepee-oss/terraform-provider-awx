@@ -4,7 +4,7 @@
 Example Usage
 
 ```hcl
-data "awx_schedule" "default" {
+data "awx_notification_template" "default" {
   name            = "private_services"
 }
 ```
@@ -21,9 +21,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
-func dataSourceSchedule() *schema.Resource {
+func dataSourceNotificationTemplate() *schema.Resource {
 	return &schema.Resource{
-		ReadContext: dataSourceSchedulesRead,
+		ReadContext: dataSourceNotificationTemplatesRead,
 		Schema: map[string]*schema.Schema{
 			"id": {
 				Type:     schema.TypeInt,
@@ -39,7 +39,7 @@ func dataSourceSchedule() *schema.Resource {
 	}
 }
 
-func dataSourceSchedulesRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+func dataSourceNotificationTemplatesRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	var diags diag.Diagnostics
 	client := m.(*awx.AWX)
 	params := make(map[string]string)
@@ -58,23 +58,23 @@ func dataSourceSchedulesRead(ctx context.Context, d *schema.ResourceData, m inte
 		)
 	}
 
-	schedules, _, err := client.ScheduleService.List(params)
+	notificationTemplates, _, err := client.NotificationTemplatesService.List(params)
 	if err != nil {
 		return buildDiagnosticsMessage(
-			"Get: Fail to fetch Schedule Group",
+			"Get: Fail to fetch NotificationTemplate",
 			"Fail to find the group got: %s",
 			err.Error(),
 		)
 	}
-	if len(schedules) > 1 {
+	if len(notificationTemplates) > 1 {
 		return buildDiagnosticsMessage(
 			"Get: find more than one Element",
 			"The Query Returns more than one Group, %d",
-			len(schedules),
+			len(notificationTemplates),
 		)
 	}
 
-	schedule := schedules[0]
-	d = setScheduleResourceData(d, schedule)
+	notificationTemplate := notificationTemplates[0]
+	d = setNotificationTemplateResourceData(d, notificationTemplate)
 	return diags
 }

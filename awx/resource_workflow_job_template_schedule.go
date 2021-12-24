@@ -50,7 +50,7 @@ func resourceWorkflowJobTemplateSchedule() *schema.Resource {
 			},
 			"unified_job_template_id": {
 				Type:     schema.TypeInt,
-				Optional: true,
+				Required: true,
 			},
 			"description": {
 				Type:     schema.TypeString,
