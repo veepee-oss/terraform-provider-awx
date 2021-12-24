@@ -28,5 +28,4 @@ The following arguments are supported:
 * `notification_type` - (Required) 
 * `organization_id` - (Required) 
 * `description` - (Optional) 
-* `notification_type` - (Optional) 
 * `notification_configuration` - (Optional) 

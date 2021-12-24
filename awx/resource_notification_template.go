@@ -35,15 +35,15 @@ func resourceNotificationTemplate() *schema.Resource {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"description": {
-				Type:     schema.TypeString,
-				Optional: true,
-			},
 			"organization_id": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
 			"notification_type": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"description": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
