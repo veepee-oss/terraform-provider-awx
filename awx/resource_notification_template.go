@@ -14,6 +14,7 @@ package awx
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"log"
 	"strconv"
@@ -61,12 +62,24 @@ func resourceNotificationTemplateCreate(ctx context.Context, d *schema.ResourceD
 	client := m.(*awx.AWX)
 	awxService := client.NotificationTemplatesService
 
+	notificationConfigurationStr := d.Get("notification_configuration").(string)
+	notificationConfigurationMap := make(map[string]interface{})
+	err := json.Unmarshal([]byte(notificationConfigurationStr), &notificationConfigurationMap)
+	if err != nil {
+		diags = append(diags, diag.Diagnostic{
+			Severity: diag.Error,
+			Summary:  "Unable to create NotificationTemplate",
+			Detail:   fmt.Sprintf("error while unmarshal notification_configuration: %s", err.Error()),
+		})
+		return diags
+	}
+
 	result, err := awxService.Create(map[string]interface{}{
 		"name":                       d.Get("name").(string),
 		"description":                d.Get("description").(string),
 		"organization":               d.Get("organization_id").(string),
 		"notification_type":          d.Get("notification_type").(string),
-		"notification_configuration": d.Get("notification_configuration").(string),
+		"notification_configuration": notificationConfigurationMap,
 	}, map[string]string{})
 	if err != nil {
 		log.Printf("Fail to Create notification_template %v", err)
@@ -97,12 +110,24 @@ func resourceNotificationTemplateUpdate(ctx context.Context, d *schema.ResourceD
 		return buildDiagNotFoundFail("notification_template", id, err)
 	}
 
+	notificationConfigurationStr := d.Get("notification_configuration").(string)
+	notificationConfigurationMap := make(map[string]interface{})
+	err = json.Unmarshal([]byte(notificationConfigurationStr), &notificationConfigurationMap)
+	if err != nil {
+		diags = append(diags, diag.Diagnostic{
+			Severity: diag.Error,
+			Summary:  "Unable to create NotificationTemplate",
+			Detail:   fmt.Sprintf("error while unmarshal notification_configuration: %s", err.Error()),
+		})
+		return diags
+	}
+
 	_, err = awxService.Update(id, map[string]interface{}{
 		"name":                       d.Get("name").(string),
 		"description":                d.Get("description").(string),
 		"organization":               d.Get("organization_id").(string),
 		"notification_type":          d.Get("notification_type").(string),
-		"notification_configuration": d.Get("notification_configuration").(string),
+		"notification_configuration": notificationConfigurationMap,
 	}, map[string]string{})
 	if err != nil {
 		diags = append(diags, diag.Diagnostic{
