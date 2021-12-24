@@ -1,3 +1,10 @@
+# [0.11.0](https://github.com/denouche/terraform-provider-awx/compare/v0.10.7...v0.11.0) (2021-12-24)
+
+
+### Features
+
+* add notification_template resource ([9c5b488](https://github.com/denouche/terraform-provider-awx/commit/9c5b4885dfcd068b7dbac89567067c606b73fa6c))
+
 ## [0.10.7](https://github.com/denouche/terraform-provider-awx/compare/v0.10.6...v0.10.7) (2021-12-23)
 
 
