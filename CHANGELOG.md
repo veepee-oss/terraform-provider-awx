@@ -1,3 +1,10 @@
+## [0.11.3](https://github.com/denouche/terraform-provider-awx/compare/v0.11.2...v0.11.3) (2021-12-24)
+
+
+### Bug Fixes
+
+* notification_configuration is a string ([f10fb3b](https://github.com/denouche/terraform-provider-awx/commit/f10fb3ba03deca84d3169bc2eac0b01503c438f8))
+
 ## [0.11.2](https://github.com/denouche/terraform-provider-awx/compare/v0.11.1...v0.11.2) (2021-12-24)
 
 
