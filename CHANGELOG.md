@@ -1,3 +1,10 @@
+## [0.11.4](https://github.com/denouche/terraform-provider-awx/compare/v0.11.3...v0.11.4) (2021-12-24)
+
+
+### Bug Fixes
+
+* notification template notification configuration is a json ([09787ef](https://github.com/denouche/terraform-provider-awx/commit/09787ef93e745a0049970f5fcd134f5ab5a7f6f5))
+
 ## [0.11.3](https://github.com/denouche/terraform-provider-awx/compare/v0.11.2...v0.11.3) (2021-12-24)
 
 
