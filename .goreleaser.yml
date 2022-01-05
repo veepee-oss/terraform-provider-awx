@@ -17,14 +17,14 @@ builds:
     - '-s -w -X main.version={{.Version}} -X main.commit={{.Commit}}'
   goos:
     - linux
-#    - freebsd
-#    - darwin
-#    - windows
+#    - freebsd # TODO add it after dev is done
+#    - darwin # TODO add it after dev is done
+#    - windows # TODO add it after dev is done
   goarch:
     - amd64
-#    - '386'
-#    - arm
-#    - arm64
+#    - '386' # TODO add it after dev is done
+#    - arm # TODO add it after dev is done
+#    - arm64 # TODO add it after dev is done
   ignore:
     - goos: darwin
       goarch: '386'
