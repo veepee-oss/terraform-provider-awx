@@ -1,3 +1,10 @@
+## [0.12.2](https://github.com/denouche/terraform-provider-awx/compare/v0.12.1...v0.12.2) (2022-01-05)
+
+
+### Bug Fixes
+
+* upgrade goawx dep ([ba2ea50](https://github.com/denouche/terraform-provider-awx/commit/ba2ea509f164f7dad4f5477d6d58a40a798c0022))
+
 ## [0.12.1](https://github.com/denouche/terraform-provider-awx/compare/v0.12.0...v0.12.1) (2022-01-05)
 
 
