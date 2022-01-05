@@ -1,3 +1,10 @@
+# [0.12.0](https://github.com/denouche/terraform-provider-awx/compare/v0.11.4...v0.12.0) (2022-01-05)
+
+
+### Features
+
+* add resources awx_job_template_notification_template_success awx_job_template_notification_template_error awx_job_template_notification_template_started ([24b69c5](https://github.com/denouche/terraform-provider-awx/commit/24b69c5ded4c0fbba366637c0e423e0fc07679e6))
+
 ## [0.11.4](https://github.com/denouche/terraform-provider-awx/compare/v0.11.3...v0.11.4) (2021-12-24)
 
 
