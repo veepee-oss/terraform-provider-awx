@@ -21,7 +21,7 @@ description: |-
 The following arguments are supported:
 
 * `name` - (Required) 
-* `organisation_id` - (Required) 
+* `organization_id` - (Required) 
 * `description` - (Optional) 
 * `password` - (Optional) 
 * `ssh_key_data` - (Optional) 

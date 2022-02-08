@@ -21,7 +21,7 @@ description: |-
 The following arguments are supported:
 
 * `name` - (Required) 
-* `organisation_id` - (Required) 
+* `organization_id` - (Required) 
 * `become_method` - (Optional) 
 * `become_password` - (Optional) 
 * `become_username` - (Optional) 

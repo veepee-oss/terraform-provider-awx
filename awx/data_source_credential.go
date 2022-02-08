@@ -23,19 +23,19 @@ func dataSourceCredentialByID() *schema.Resource {
 	return &schema.Resource{
 		ReadContext: dataSourceCredentialByIDRead,
 		Schema: map[string]*schema.Schema{
-			"id": &schema.Schema{
+			"id": {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
-			"tower_id": &schema.Schema{
+			"tower_id": {
 				Type:     schema.TypeInt,
 				Computed: true,
 			},
-			"username": &schema.Schema{
+			"username": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
-			"kind": &schema.Schema{
+			"kind": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},

@@ -19,7 +19,7 @@ data "awx_organization" "default" {
 
 resource "awx_inventory" "default" {
   name            = "acc-test"
-  organisation_id = data.awx_organization.default.id
+  organization_id = data.awx_organization.default.id
   variables       = <<YAML
 ---
 system_supporters:
@@ -33,7 +33,7 @@ YAML
 The following arguments are supported:
 
 * `name` - (Required) 
-* `organisation_id` - (Required) 
+* `organization_id` - (Required) 
 * `description` - (Optional) 
 * `host_filter` - (Optional) 
 * `kind` - (Optional) 

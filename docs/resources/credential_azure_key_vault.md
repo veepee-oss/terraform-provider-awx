@@ -22,7 +22,7 @@ The following arguments are supported:
 
 * `client` - (Required) 
 * `name` - (Required) 
-* `organisation_id` - (Required) 
+* `organization_id` - (Required) 
 * `secret` - (Required) 
 * `tenant` - (Required) 
 * `url` - (Required) 

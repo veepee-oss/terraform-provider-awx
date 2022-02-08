@@ -10,7 +10,7 @@ data "awx_organization" "default" {
 
 resource "awx_inventory" "default" {
   name            = "acc-test"
-  organisation_id = data.awx_organization.default.id
+  organization_id = data.awx_organization.default.id
   variables       = <<YAML
 ---
 system_supporters:
@@ -40,30 +40,30 @@ func resourceInventory() *schema.Resource {
 		UpdateContext: resourceInventoryUpdate,
 
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"description": &schema.Schema{
+			"description": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
-			"organisation_id": &schema.Schema{
+			"organization_id": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"kind": &schema.Schema{
+			"kind": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
-			"host_filter": &schema.Schema{
+			"host_filter": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
-			"variables": &schema.Schema{
+			"variables": {
 				Type:      schema.TypeString,
 				Optional:  true,
 				Default:   "",
@@ -82,7 +82,7 @@ func resourceInventoryCreate(ctx context.Context, d *schema.ResourceData, m inte
 
 	result, err := awxService.CreateInventory(map[string]interface{}{
 		"name":         d.Get("name").(string),
-		"organization": d.Get("organisation_id").(string),
+		"organization": d.Get("organization_id").(string),
 		"description":  d.Get("description").(string),
 		"kind":         d.Get("kind").(string),
 		"host_filter":  d.Get("host_filter").(string),
@@ -106,7 +106,7 @@ func resourceInventoryUpdate(ctx context.Context, d *schema.ResourceData, m inte
 	}
 	_, err := awxService.UpdateInventory(id, map[string]interface{}{
 		"name":         d.Get("name").(string),
-		"organization": d.Get("organisation_id").(string),
+		"organization": d.Get("organization_id").(string),
 		"description":  d.Get("description").(string),
 		"kind":         d.Get("kind").(string),
 		"host_filter":  d.Get("host_filter").(string),
@@ -158,7 +158,7 @@ func resourceInventoryDelete(ctx context.Context, d *schema.ResourceData, m inte
 
 func setInventoryResourceData(d *schema.ResourceData, r *awx.Inventory) *schema.ResourceData {
 	d.Set("name", r.Name)
-	d.Set("organisation_id", strconv.Itoa(r.Organization))
+	d.Set("organization_id", strconv.Itoa(r.Organization))
 	d.Set("description", r.Description)
 	d.Set("kind", r.Kind)
 	d.Set("host_filter", r.HostFilter)

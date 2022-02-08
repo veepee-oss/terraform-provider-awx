@@ -27,50 +27,50 @@ func resourceCredentialMachine() *schema.Resource {
 		UpdateContext: resourceCredentialMachineUpdate,
 		DeleteContext: CredentialsServiceDeleteByID,
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"description": &schema.Schema{
+			"description": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"organisation_id": &schema.Schema{
+			"organization_id": {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
-			"username": &schema.Schema{
+			"username": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"password": &schema.Schema{
+			"password": {
 				Type:      schema.TypeString,
 				Optional:  true,
 				Sensitive: true,
 			},
-			"ssh_key_data": &schema.Schema{
+			"ssh_key_data": {
 				Type:      schema.TypeString,
 				Optional:  true,
 				Sensitive: true,
 			},
-			"ssh_public_key_data": &schema.Schema{
+			"ssh_public_key_data": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"ssh_key_unlock": &schema.Schema{
+			"ssh_key_unlock": {
 				Type:      schema.TypeString,
 				Optional:  true,
 				Sensitive: true,
 			},
-			"become_method": &schema.Schema{
+			"become_method": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"become_username": &schema.Schema{
+			"become_username": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"become_password": &schema.Schema{
+			"become_password": {
 				Type:      schema.TypeString,
 				Optional:  true,
 				Sensitive: true,
@@ -86,7 +86,7 @@ func resourceCredentialMachineCreate(ctx context.Context, d *schema.ResourceData
 	newCredential := map[string]interface{}{
 		"name":            d.Get("name").(string),
 		"description":     d.Get("description").(string),
-		"organization":    d.Get("organisation_id").(int),
+		"organization":    d.Get("organization_id").(int),
 		"credential_type": 1, // SSH
 		"inputs": map[string]interface{}{
 			"username":            d.Get("username").(string),
@@ -142,7 +142,7 @@ func resourceCredentialMachineRead(ctx context.Context, d *schema.ResourceData, 
 	d.Set("become_method", cred.Inputs["become_method"])
 	d.Set("become_username", cred.Inputs["become_username"])
 	d.Set("become_password", cred.Inputs["become_password"])
-	d.Set("organisation_id", cred.OrganizationID)
+	d.Set("organization_id", cred.OrganizationID)
 
 	return diags
 }
@@ -161,7 +161,7 @@ func resourceCredentialMachineUpdate(ctx context.Context, d *schema.ResourceData
 		"become_method",
 		"become_username",
 		"become_password",
-		"organisation_id",
+		"organization_id",
 		"team_id",
 		"owner_id",
 	}
@@ -173,7 +173,7 @@ func resourceCredentialMachineUpdate(ctx context.Context, d *schema.ResourceData
 		updatedCredential := map[string]interface{}{
 			"name":            d.Get("name").(string),
 			"description":     d.Get("description").(string),
-			"organization":    d.Get("organisation_id").(int),
+			"organization":    d.Get("organization_id").(int),
 			"credential_type": 1, // SSH
 			"inputs": map[string]interface{}{
 				"username":            d.Get("username").(string),

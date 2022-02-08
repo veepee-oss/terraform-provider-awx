@@ -27,27 +27,27 @@ func resourceCredentialGoogleComputeEngine() *schema.Resource {
 		UpdateContext: resourceCredentialGoogleComputeEngineUpdate,
 		DeleteContext: CredentialsServiceDeleteByID,
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"description": &schema.Schema{
+			"description": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"organisation_id": &schema.Schema{
+			"organization_id": {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
-			"username": &schema.Schema{
+			"username": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"project": &schema.Schema{
+			"project": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"ssh_key_data": &schema.Schema{
+			"ssh_key_data": {
 				Type:      schema.TypeString,
 				Required:  true,
 				Sensitive: true,
@@ -63,7 +63,7 @@ func resourceCredentialGoogleComputeEngineCreate(ctx context.Context, d *schema.
 	newCredential := map[string]interface{}{
 		"name":            d.Get("name").(string),
 		"description":     d.Get("description").(string),
-		"organization":    d.Get("organisation_id").(int),
+		"organization":    d.Get("organization_id").(int),
 		"credential_type": 10, // Google Compute Engine
 		"inputs": map[string]interface{}{
 			"username":     d.Get("username").(string),
@@ -106,7 +106,7 @@ func resourceCredentialGoogleComputeEngineRead(ctx context.Context, d *schema.Re
 
 	d.Set("name", cred.Name)
 	d.Set("description", cred.Description)
-	d.Set("organisation_id", cred.OrganizationID)
+	d.Set("organization_id", cred.OrganizationID)
 	d.Set("username", cred.Inputs["username"])
 	d.Set("project", cred.Inputs["project"])
 
@@ -132,7 +132,7 @@ func resourceCredentialGoogleComputeEngineUpdate(ctx context.Context, d *schema.
 		updatedCredential := map[string]interface{}{
 			"name":            d.Get("name").(string),
 			"description":     d.Get("description").(string),
-			"organization":    d.Get("organisation_id").(int),
+			"organization":    d.Get("organization_id").(int),
 			"credential_type": 10, // Google Compute Engine
 			"inputs": map[string]interface{}{
 				"username":     d.Get("username").(string),

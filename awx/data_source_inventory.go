@@ -6,7 +6,7 @@ Example Usage
 ```hcl
 data "awx_inventory" "default" {
   name            = "private_services"
-  organisation_id = data.awx_organization.default.id
+  organization_id = data.awx_organization.default.id
 }
 ```
 
@@ -26,17 +26,17 @@ func dataSourceInventory() *schema.Resource {
 	return &schema.Resource{
 		ReadContext: dataSourceInventoriesRead,
 		Schema: map[string]*schema.Schema{
-			"id": &schema.Schema{
+			"id": {
 				Type:     schema.TypeInt,
 				Optional: true,
 				Computed: true,
 			},
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,
 			},
-			"organisation_id": &schema.Schema{
+			"organization_id": {
 				Type:     schema.TypeInt,
 				Optional: true,
 				Computed: true,
@@ -57,8 +57,8 @@ func dataSourceInventoriesRead(ctx context.Context, d *schema.ResourceData, m in
 		params["id"] = strconv.Itoa(groupID.(int))
 	}
 
-	if organisationID, okIOrgID := d.GetOk("organisation_id"); okIOrgID {
-		params["organization"] = strconv.Itoa(organisationID.(int))
+	if organizationID, okIOrgID := d.GetOk("organization_id"); okIOrgID {
+		params["organization"] = strconv.Itoa(organizationID.(int))
 	}
 	if len(params) == 0 {
 		return buildDiagnosticsMessage(

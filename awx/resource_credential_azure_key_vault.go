@@ -27,32 +27,32 @@ func resourceCredentialAzureKeyVault() *schema.Resource {
 		UpdateContext: resourceCredentialAzureKeyVaultUpdate,
 		DeleteContext: CredentialsServiceDeleteByID,
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"description": &schema.Schema{
+			"description": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"organisation_id": &schema.Schema{
+			"organization_id": {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
-			"url": &schema.Schema{
+			"url": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"client": &schema.Schema{
+			"client": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"secret": &schema.Schema{
+			"secret": {
 				Type:      schema.TypeString,
 				Required:  true,
 				Sensitive: true,
 			},
-			"tenant": &schema.Schema{
+			"tenant": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
@@ -67,7 +67,7 @@ func resourceCredentialAzureKeyVaultCreate(ctx context.Context, d *schema.Resour
 	newCredential := map[string]interface{}{
 		"name":            d.Get("name").(string),
 		"description":     d.Get("description").(string),
-		"organization":    d.Get("organisation_id").(int),
+		"organization":    d.Get("organization_id").(int),
 		"credential_type": 19, // Azure Key Vault
 		"inputs": map[string]interface{}{
 			"url":    d.Get("url").(string),
@@ -111,7 +111,7 @@ func resourceCredentialAzureKeyVaultRead(ctx context.Context, d *schema.Resource
 
 	d.Set("name", cred.Name)
 	d.Set("description", cred.Description)
-	d.Set("organisation_id", cred.OrganizationID)
+	d.Set("organization_id", cred.OrganizationID)
 	d.Set("url", cred.Inputs["url"])
 	d.Set("client", cred.Inputs["client"])
 	d.Set("secret", d.Get("secret").(string))
@@ -139,7 +139,7 @@ func resourceCredentialAzureKeyVaultUpdate(ctx context.Context, d *schema.Resour
 		updatedCredential := map[string]interface{}{
 			"name":            d.Get("name").(string),
 			"description":     d.Get("description").(string),
-			"organization":    d.Get("organisation_id").(int),
+			"organization":    d.Get("organization_id").(int),
 			"credential_type": 19, // Azure Key Vault
 			"inputs": map[string]interface{}{
 				"url":    d.Get("url").(string),

@@ -15,7 +15,7 @@ description: |-
 ```hcl
 resource "awx_workflow_job_template" "default" {
   name            = "workflow-job"
-  organisation_id = var.organisation_id
+  organization_id = var.organization_id
   inventory_id    = awx_inventory.default.id
 }
 ```
@@ -33,7 +33,7 @@ The following arguments are supported:
 * `description` - (Optional) Optional description of this workflow job template.
 * `inventory_id` - (Optional) Inventory applied as a prompt, assuming job template prompts for inventory.
 * `limit` - (Optional) 
-* `organisation_id` - (Optional) The organization used to determine access to this template. (id, default=``)
+* `organization_id` - (Optional) The organization used to determine access to this template. (id, default=``)
 * `scm_branch` - (Optional) 
 * `survey_enabled` - (Optional) 
 * `variables` - (Optional) 

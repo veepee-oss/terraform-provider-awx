@@ -23,6 +23,6 @@ The following arguments are supported:
 * `credential_type_id` - (Required) Specify the type of credential you want to create. Refer to the Ansible Tower documentation for details on each type
 * `inputs` - (Required) 
 * `name` - (Required) 
-* `organisation_id` - (Required) 
+* `organization_id` - (Required) 
 * `description` - (Optional) 
 

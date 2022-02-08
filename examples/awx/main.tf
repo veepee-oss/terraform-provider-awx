@@ -48,7 +48,7 @@ resource "azurerm_key_vault_secret" "example" {
 }
 
 resource "awx_credential_machine" "windows" {
-  organisation_id = 1
+  organization_id = 1
   name = "Windows Server 2018"
   username = "administrator"
 }
@@ -65,7 +65,7 @@ resource "awx_credential_input_source" "azure-to-windows" {
 
 resource "awx_credential_azure_key_vault" "windows" {
   name = "Primary Key Vault"
-  organisation_id = 1
+  organization_id = 1
   url = data.azurerm_key_vault.example.vault_uri
   client = "<example>"
   secret = "<example>"

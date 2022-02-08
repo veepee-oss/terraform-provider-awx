@@ -31,23 +31,23 @@ func resourceOrganization() *schema.Resource {
 		DeleteContext: resourceOrganizationsDelete,
 
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"description": &schema.Schema{
+			"description": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Default:  "",
 			},
 			// Run, Check, Scan
-			"max_hosts": &schema.Schema{
+			"max_hosts": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     0,
 				Description: "Maximum number of hosts allowed to be managed by this organization",
 			},
-			"custom_virtualenv": &schema.Schema{
+			"custom_virtualenv": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Description: "Local absolute file path containing a custom Python virtualenv to use",

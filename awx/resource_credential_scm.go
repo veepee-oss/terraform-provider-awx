@@ -27,33 +27,33 @@ func resourceCredentialSCM() *schema.Resource {
 		UpdateContext: resourceCredentialSCMUpdate,
 		DeleteContext: CredentialsServiceDeleteByID,
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"description": &schema.Schema{
+			"description": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"organisation_id": &schema.Schema{
+			"organization_id": {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
-			"username": &schema.Schema{
+			"username": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"password": &schema.Schema{
+			"password": {
 				Type:      schema.TypeString,
 				Optional:  true,
 				Sensitive: true,
 			},
-			"ssh_key_data": &schema.Schema{
+			"ssh_key_data": {
 				Type:      schema.TypeString,
 				Optional:  true,
 				Sensitive: true,
 			},
-			"ssh_key_unlock": &schema.Schema{
+			"ssh_key_unlock": {
 				Type:      schema.TypeString,
 				Optional:  true,
 				Sensitive: true,
@@ -69,7 +69,7 @@ func resourceCredentialSCMCreate(ctx context.Context, d *schema.ResourceData, m 
 	newCredential := map[string]interface{}{
 		"name":            d.Get("name").(string),
 		"description":     d.Get("description").(string),
-		"organization":    d.Get("organisation_id").(int),
+		"organization":    d.Get("organization_id").(int),
 		"credential_type": 2, // Source Controll
 		"inputs": map[string]interface{}{
 			"username":       d.Get("username").(string),
@@ -117,7 +117,7 @@ func resourceCredentialSCMRead(ctx context.Context, d *schema.ResourceData, m in
 	d.Set("password", cred.Inputs["password"])
 	d.Set("ssh_key_data", cred.Inputs["ssh_key_data"])
 	d.Set("ssh_key_unlock", cred.Inputs["ssh_key_unlock"])
-	d.Set("organisation_id", cred.OrganizationID)
+	d.Set("organization_id", cred.OrganizationID)
 
 	return diags
 }
@@ -132,7 +132,7 @@ func resourceCredentialSCMUpdate(ctx context.Context, d *schema.ResourceData, m 
 		"password",
 		"ssh_key_data",
 		"ssh_key_unlock",
-		"organisation_id",
+		"organization_id",
 	}
 
 	if d.HasChanges(keys...) {
@@ -142,7 +142,7 @@ func resourceCredentialSCMUpdate(ctx context.Context, d *schema.ResourceData, m 
 		updatedCredential := map[string]interface{}{
 			"name":            d.Get("name").(string),
 			"description":     d.Get("description").(string),
-			"organization":    d.Get("organisation_id").(int),
+			"organization":    d.Get("organization_id").(int),
 			"credential_type": 2, // Source Controll
 			"inputs": map[string]interface{}{
 				"username":       d.Get("username").(string),

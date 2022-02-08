@@ -25,12 +25,12 @@ func dataSourceWorkflowJobTemplate() *schema.Resource {
 	return &schema.Resource{
 		ReadContext: dataSourceWorkflowJobTemplateRead,
 		Schema: map[string]*schema.Schema{
-			"id": &schema.Schema{
+			"id": {
 				Type:     schema.TypeInt,
 				Optional: true,
 				Computed: true,
 			},
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,

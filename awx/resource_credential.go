@@ -12,8 +12,8 @@ package awx
 
 import (
 	"context"
-	"fmt"
 	"encoding/json"
+	"fmt"
 	"strconv"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
@@ -28,26 +28,26 @@ func resourceCredential() *schema.Resource {
 		UpdateContext: resourceCredentialUpdate,
 		DeleteContext: CredentialsServiceDeleteByID,
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"description": &schema.Schema{
+			"description": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"organisation_id": &schema.Schema{
+			"organization_id": {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
-			"credential_type_id": &schema.Schema{
-				Type:     schema.TypeInt,
-				Required: true,
+			"credential_type_id": {
+				Type:        schema.TypeInt,
+				Required:    true,
 				Description: "Specify the type of credential you want to create. Refer to the Ansible Tower documentation for details on each type",
 			},
-			"inputs": &schema.Schema{
-				Type: schema.TypeString,
-				Required: true,
+			"inputs": {
+				Type:      schema.TypeString,
+				Required:  true,
 				Sensitive: true,
 			},
 		},
@@ -74,7 +74,7 @@ func resourceCredentialCreate(ctx context.Context, d *schema.ResourceData, m int
 	newCredential := map[string]interface{}{
 		"name":            d.Get("name").(string),
 		"description":     d.Get("description").(string),
-		"organization":    d.Get("organisation_id").(int),
+		"organization":    d.Get("organization_id").(int),
 		"credential_type": d.Get("credential_type_id").(int),
 		"inputs":          inputs_map,
 	}
@@ -113,7 +113,7 @@ func resourceCredentialRead(ctx context.Context, d *schema.ResourceData, m inter
 
 	d.Set("name", cred.Name)
 	d.Set("description", cred.Description)
-	d.Set("organisation_id", cred.OrganizationID)
+	d.Set("organization_id", cred.OrganizationID)
 	d.Set("inputs", cred.Inputs)
 
 	return diags
@@ -125,7 +125,7 @@ func resourceCredentialUpdate(ctx context.Context, d *schema.ResourceData, m int
 	keys := []string{
 		"name",
 		"description",
-		"organisation_id",
+		"organization_id",
 		"inputs",
 	}
 
@@ -135,7 +135,7 @@ func resourceCredentialUpdate(ctx context.Context, d *schema.ResourceData, m int
 		inputs := d.Get("inputs").(string)
 		inputs_map := make(map[string]interface{})
 		jsonerr := json.Unmarshal([]byte(inputs), &inputs_map)
-	
+
 		if jsonerr != nil {
 			diags = append(diags, diag.Diagnostic{
 				Severity: diag.Error,
@@ -149,7 +149,7 @@ func resourceCredentialUpdate(ctx context.Context, d *schema.ResourceData, m int
 		updatedCredential := map[string]interface{}{
 			"name":            d.Get("name").(string),
 			"description":     d.Get("description").(string),
-			"organization":    d.Get("organisation_id").(int),
+			"organization":    d.Get("organization_id").(int),
 			"credential_type": d.Get("credential_type_id"),
 			"inputs":          inputs_map,
 		}
