@@ -71,6 +71,7 @@ func Provider() *schema.Provider {
 			"awx_inventory_role":             dataSourceInventoryRole(),
 			"awx_job_template":               dataSourceJobTemplate(),
 			"awx_organization":               dataSourceOrganization(),
+			"awx_organization_role":          dataSourceOrganizationRole(),
 			"awx_project":                    dataSourceProject(),
 			"awx_project_role":               dataSourceProjectRole(),
 			"awx_workflow_job_template":      dataSourceWorkflowJobTemplate(),
