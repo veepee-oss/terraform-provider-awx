@@ -8,12 +8,8 @@ Example Usage
 
 ```hcl
 resource "awx_setting" "social_auth_saml_technical_contact" {
-  name       = "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT"
-  value_json = {
-    givenName = "Myorg"
-    emailAddress = "test@foo.com"
-  }
-}
+  name  = "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT"
+  value = "{\"givenName\": \"Myorg\", \"emailAddress\": \"test@foo.com\"}}"
 
 resource "awx_setting" "social_auth_saml_sp_entity_id" {
   name  = "SOCIAL_AUTH_SAML_SP_ENTITY_ID"
@@ -32,6 +28,7 @@ package awx
 import (
 	"context"
 	"time"
+	"encoding/json"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -53,19 +50,8 @@ func resourceSetting() *schema.Resource {
 			},
 			"value": {
 				Type:        schema.TypeString,
-				Optional:    true,
-				Description: "Value to be modified for given setting. This field is mutually exclusive with the field `value_json`",
-				ConflictsWith: []string{
-					"value_json",
-				},
-			},
-			"value_json": {
-				Type:        schema.TypeMap,
-				Optional:    true,
-				Description: "Value to be modified for given setting json formated. This field is mutually exclusive with the field `value`",
-				ConflictsWith: []string{
-					"value",
-				},
+				Required:    true,
+				Description: "Value to be modified for given setting.",
 			},
 		},
 		Importer: &schema.ResourceImporter{
@@ -94,22 +80,22 @@ func resourceSettingUpdate(ctx context.Context, d *schema.ResourceData, m interf
 		)
 	}
 
-	var value interface{}
-	name := d.Get("name").(string)
+	var json_decoded map[string]interface{}
+	var formatted_value interface{}
 
-	if v, ok := d.GetOk("value"); ok {
-		value = v
-	} else if v, ok := d.GetOk("value_json"); ok {
-		value = v
-	} else {
-		return buildDiagnosticsMessage(
-			"Wrong input value",
-			"`value` or `value_json` need to be define, got: value: %s, value_json: %s", d.Get("value"), d.Get("value_json"),
-		)
+	name := d.Get("name").(string)
+	value := d.Get("value").(string)
+
+	err = json.Unmarshal([]byte(value), &json_decoded)
+
+    if err != nil {
+		formatted_value = value
+    } else {
+		formatted_value = json_decoded
 	}
 
 	payload := map[string]interface{}{
-		name: value,
+		name: formatted_value,
 	}
 
 	_, err = awxService.UpdateSettings("all", payload, make(map[string]string))
