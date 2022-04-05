@@ -9,7 +9,13 @@ Example Usage
 ```hcl
 resource "awx_setting" "social_auth_saml_technical_contact" {
   name  = "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT"
-  value = "{\"givenName\": \"Myorg\", \"emailAddress\": \"test@foo.com\"}}"
+  value = <<EOF
+  {
+    "givenName": "Myorg",
+    "emailAddress": "test@foo.com"
+  }
+  EOF
+}
 
 resource "awx_setting" "social_auth_saml_sp_entity_id" {
   name  = "SOCIAL_AUTH_SAML_SP_ENTITY_ID"
@@ -19,6 +25,17 @@ resource "awx_setting" "social_auth_saml_sp_entity_id" {
 resource "awx_setting" "schedule_max_jobs" {
   name  = "SCHEDULE_MAX_JOBS"
   value = 15
+}
+
+resource "awx_setting" "remote_host_headers" {
+  name  = "REMOTE_HOST_HEADERS"
+  value = <<EOF
+  [
+    "HTTP_X_FORWARDED_FOR",
+    "REMOTE_ADDR",
+    "REMOTE_HOST"
+  ]
+  EOF
 }
 ```
 
@@ -80,18 +97,27 @@ func resourceSettingUpdate(ctx context.Context, d *schema.ResourceData, m interf
 		)
 	}
 
-	var json_decoded map[string]interface{}
+	var map_decoded map[string]interface{}
+	var array_decoded []interface{}
 	var formatted_value interface{}
 
 	name := d.Get("name").(string)
 	value := d.Get("value").(string)
 
-	err = json.Unmarshal([]byte(value), &json_decoded)
+	// Attempt to unmarshall string into a map
+	err = json.Unmarshal([]byte(value), &map_decoded)
 
     if err != nil {
-		formatted_value = value
+		// Attempt to unmarshall string into an array
+		err = json.Unmarshal([]byte(value), &array_decoded)
+
+		if err != nil {
+			formatted_value = value
+		} else {
+			formatted_value = array_decoded
+		}
     } else {
-		formatted_value = json_decoded
+		formatted_value = map_decoded
 	}
 
 	payload := map[string]interface{}{
