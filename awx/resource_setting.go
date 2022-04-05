@@ -107,7 +107,7 @@ func resourceSettingUpdate(ctx context.Context, d *schema.ResourceData, m interf
 	// Attempt to unmarshall string into a map
 	err = json.Unmarshal([]byte(value), &map_decoded)
 
-    if err != nil {
+	if err != nil {
 		// Attempt to unmarshall string into an array
 		err = json.Unmarshal([]byte(value), &array_decoded)
 
@@ -116,7 +116,7 @@ func resourceSettingUpdate(ctx context.Context, d *schema.ResourceData, m interf
 		} else {
 			formatted_value = array_decoded
 		}
-    } else {
+	} else {
 		formatted_value = map_decoded
 	}
 
