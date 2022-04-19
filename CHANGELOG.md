@@ -1,3 +1,10 @@
+## [0.12.3](https://github.com/denouche/terraform-provider-awx/compare/v0.12.2...v0.12.3) (2022-04-19)
+
+
+### Bug Fixes
+
+* publish for all os and arch ([7a3cd45](https://github.com/denouche/terraform-provider-awx/commit/7a3cd4552b44246377a00a185dbde48b45ce07dc))
+
 ## [0.12.2](https://github.com/denouche/terraform-provider-awx/compare/v0.12.1...v0.12.2) (2022-01-05)
 
 
