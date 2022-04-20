@@ -1,3 +1,10 @@
+# [0.13.0](https://github.com/denouche/terraform-provider-awx/compare/v0.12.3...v0.13.0) (2022-04-20)
+
+
+### Features
+
+* support execution environments ([#1](https://github.com/denouche/terraform-provider-awx/issues/1)) ([0791c09](https://github.com/denouche/terraform-provider-awx/commit/0791c09cb85783e7433f8e4ea80cfa9d7911af32))
+
 ## [0.12.3](https://github.com/denouche/terraform-provider-awx/compare/v0.12.2...v0.12.3) (2022-04-19)
 
 
