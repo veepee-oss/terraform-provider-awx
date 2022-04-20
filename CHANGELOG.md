@@ -1,3 +1,10 @@
+## [0.13.1](https://github.com/denouche/terraform-provider-awx/compare/v0.13.0...v0.13.1) (2022-04-20)
+
+
+### Bug Fixes
+
+* workflow job template & schedule inventory option default value ([#2](https://github.com/denouche/terraform-provider-awx/issues/2)) ([6869420](https://github.com/denouche/terraform-provider-awx/commit/6869420d6b87a70922c915d1012ebd15156a277a))
+
 # [0.13.0](https://github.com/denouche/terraform-provider-awx/compare/v0.12.3...v0.13.0) (2022-04-20)
 
 
