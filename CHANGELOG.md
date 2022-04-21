@@ -1,3 +1,10 @@
+# [0.14.0](https://github.com/denouche/terraform-provider-awx/compare/v0.13.1...v0.14.0) (2022-04-21)
+
+
+### Features
+
+* workflow job template notifications ([#3](https://github.com/denouche/terraform-provider-awx/issues/3)) ([00db915](https://github.com/denouche/terraform-provider-awx/commit/00db9157df52d9fb4431db6f53ac5aa8038bad44))
+
 ## [0.13.1](https://github.com/denouche/terraform-provider-awx/compare/v0.13.0...v0.13.1) (2022-04-20)
 
 
