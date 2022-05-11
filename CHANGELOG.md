@@ -1,3 +1,10 @@
+# [0.15.0](https://github.com/denouche/terraform-provider-awx/compare/v0.14.0...v0.15.0) (2022-05-11)
+
+
+### Features
+
+* organizations data source ([#4](https://github.com/denouche/terraform-provider-awx/issues/4)) ([ad61e88](https://github.com/denouche/terraform-provider-awx/commit/ad61e88a638b94eda2c306a0d9f610d65508d17f))
+
 # [0.14.0](https://github.com/denouche/terraform-provider-awx/compare/v0.13.1...v0.14.0) (2022-04-21)
 
 
