@@ -180,10 +180,6 @@ github.com/envoyproxy/go-control-plane v0.9.10-0.20210907150352-cf90f659a021/go.
 github.com/envoyproxy/protoc-gen-validate v0.1.0/go.mod h1:iSmxcyjqTsJpI2R4NaDN7+kN2VEUnK/pcBlmesArF7c=
 github.com/evanphx/json-patch v4.2.0+incompatible/go.mod h1:50XU6AFN0ol/bzJsmQLiYLvXMP4fmwYFNcr97nuDLSk=
 github.com/evanphx/json-patch v4.9.0+incompatible/go.mod h1:50XU6AFN0ol/bzJsmQLiYLvXMP4fmwYFNcr97nuDLSk=
-github.com/f0rkz/goawx v0.4.1 h1:MxxOl+kEY2WDX7/pIVuAsB4cDh6hfU515Uou3rv7Kr8=
-github.com/f0rkz/goawx v0.4.1/go.mod h1:7pBv7jPX2CCIuqrVvh8kZaLRH7wNVtW5Cufs3Pqy3CQ=
-github.com/f0rkz/goawx v0.5.0 h1:9BEmSeFdkSa0Cv9u4kvbjmARPj2jQzAwHYckirqh4Hs=
-github.com/f0rkz/goawx v0.5.0/go.mod h1:7pBv7jPX2CCIuqrVvh8kZaLRH7wNVtW5Cufs3Pqy3CQ=
 github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
 github.com/fatih/color v1.9.0/go.mod h1:eQcE1qtQxscV5RaZvpXrrb8Drkc3/DdQ+uUYCNjL+zU=
 github.com/fatih/color v1.13.0 h1:8LOYc1KYPPmyKMuN8QV2DNRWNbLo6LZ0iLs8+mlH53w=
@@ -547,8 +543,8 @@ github.com/vmihailenco/msgpack v4.0.4+incompatible/go.mod h1:fy3FlTQTDXWkZ7Bh6Ac
 github.com/vmihailenco/msgpack/v4 v4.3.12/go.mod h1:gborTTJjAo/GWTqqRjrLCn9pgNN+NXzzngzBKDPIqw4=
 github.com/vmihailenco/tagparser v0.1.1/go.mod h1:OeAg3pn3UbLjkWt+rN9oFYB6u/cQgqMEUPoW2WPyhdI=
 github.com/vmware/govmomi v0.20.3/go.mod h1:URlwyTFZX72RmxtxuaFL2Uj3fD1JTvZdx59bHWk6aFU=
-github.com/wdreeveii/goawx v0.4.2 h1:ITg+38+AIaL1Oj+tgQbpeZebY8f8c6KIxBq4+uUHkqc=
-github.com/wdreeveii/goawx v0.4.2/go.mod h1:7pBv7jPX2CCIuqrVvh8kZaLRH7wNVtW5Cufs3Pqy3CQ=
+github.com/wdreeveii/goawx v0.4.3 h1:A0PQjFtDm5+u5jYjkT3AF1ZLUciEB4GrOYFNC+uvQ7E=
+github.com/wdreeveii/goawx v0.4.3/go.mod h1:7pBv7jPX2CCIuqrVvh8kZaLRH7wNVtW5Cufs3Pqy3CQ=
 github.com/xanzy/ssh-agent v0.3.0/go.mod h1:3s9xbODqPuuhK9JV1R321M/FlMZSBvE5aY6eAcqrDh0=
 github.com/xiang90/probing v0.0.0-20190116061207-43a291ad63a2/go.mod h1:UETIi67q53MR2AWcXfiuqkDkRtnGDLqkBTpCHuJHxtU=
 github.com/xordataexchange/crypt v0.0.3-0.20170626215501-b2862e3d0a77/go.mod h1:aYKd//L2LvnjZzWKhF00oedf4jCCReLcmhLdhm1A27Q=

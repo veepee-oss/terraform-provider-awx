@@ -31,4 +31,4 @@ require (
 	gopkg.in/yaml.v2 v2.4.0
 )
 
-replace github.com/mrcrilly/goawx => github.com/wdreeveii/goawx v0.4.2
+replace github.com/mrcrilly/goawx => github.com/wdreeveii/goawx v0.4.3
