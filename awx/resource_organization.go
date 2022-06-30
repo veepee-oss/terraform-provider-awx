@@ -53,9 +53,9 @@ func resourceOrganization() *schema.Resource {
 				Description: "Local absolute file path containing a custom Python virtualenv to use",
 			},
 		},
-		//Importer: &schema.ResourceImporter{
-		//	State: schema.ImportStatePassthrough,
-		//},
+		Importer: &schema.ResourceImporter{
+			State: schema.ImportStatePassthrough,
+		},
 		//
 		//Timeouts: &schema.ResourceTimeout{
 		//	Create: schema.DefaultTimeout(1 * time.Minute),
@@ -81,7 +81,7 @@ func resourceOrganizationsCreate(ctx context.Context, d *schema.ResourceData, m 
 		diags = append(diags, diag.Diagnostic{
 			Severity: diag.Error,
 			Summary:  "Unable to create Organizations",
-			Detail:   fmt.Sprintf("Organizations with name %s in the project id %d, faild to create %s", d.Get("name").(string), d.Get("project_id").(int), err.Error()),
+			Detail:   fmt.Sprintf("Organizations with name %s failed to create %s", d.Get("name").(string), err.Error()),
 		})
 		return diags
 	}
@@ -116,7 +116,7 @@ func resourceOrganizationsUpdate(ctx context.Context, d *schema.ResourceData, m 
 		diags = append(diags, diag.Diagnostic{
 			Severity: diag.Error,
 			Summary:  "Unable to update Organizations",
-			Detail:   fmt.Sprintf("Organizations with name %s faild to update %s", d.Get("name").(string), err.Error()),
+			Detail:   fmt.Sprintf("Organizations with name %s failed to update %s", d.Get("name").(string), err.Error()),
 		})
 		return diags
 	}
