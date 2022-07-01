@@ -1,3 +1,10 @@
+## [0.15.1](https://github.com/denouche/terraform-provider-awx/compare/v0.15.0...v0.15.1) (2022-07-01)
+
+
+### Bug Fixes
+
+* goawx version for always node type ([#7](https://github.com/denouche/terraform-provider-awx/issues/7)) ([bfe6ea8](https://github.com/denouche/terraform-provider-awx/commit/bfe6ea8d2245836a5b2584b4d471ca911d1b4626))
+
 # [0.15.0](https://github.com/denouche/terraform-provider-awx/compare/v0.14.0...v0.15.0) (2022-05-11)
 
 
