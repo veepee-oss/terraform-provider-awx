@@ -1,3 +1,10 @@
+## [0.15.2](https://github.com/denouche/terraform-provider-awx/compare/v0.15.1...v0.15.2) (2022-07-01)
+
+
+### Bug Fixes
+
+* make a new release ([be91fb4](https://github.com/denouche/terraform-provider-awx/commit/be91fb4577e932ffee1019efb70620479d6089fd))
+
 ## [0.15.1](https://github.com/denouche/terraform-provider-awx/compare/v0.15.0...v0.15.1) (2022-07-01)
 
 
