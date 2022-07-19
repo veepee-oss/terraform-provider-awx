@@ -1,3 +1,10 @@
+## [0.15.3](https://github.com/denouche/terraform-provider-awx/compare/v0.15.2...v0.15.3) (2022-07-19)
+
+
+### Bug Fixes
+
+* do not provide local_path for project if the scm_type is git ([#13](https://github.com/denouche/terraform-provider-awx/issues/13)) ([b4ab7dc](https://github.com/denouche/terraform-provider-awx/commit/b4ab7dc51306507bd71ef61b611782567bc0c0bb))
+
 ## [0.15.2](https://github.com/denouche/terraform-provider-awx/compare/v0.15.1...v0.15.2) (2022-07-01)
 
 
