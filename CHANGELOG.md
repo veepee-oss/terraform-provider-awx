@@ -1,3 +1,10 @@
+## [0.15.5](https://github.com/denouche/terraform-provider-awx/compare/v0.15.4...v0.15.5) (2022-07-22)
+
+
+### Bug Fixes
+
+* fix some func names after upgrading goawx dep ([999e70d](https://github.com/denouche/terraform-provider-awx/commit/999e70ddbdcdc3ca758b85e9c6a4eea3b3859689))
+
 ## [0.15.4](https://github.com/denouche/terraform-provider-awx/compare/v0.15.3...v0.15.4) (2022-07-22)
 
 ## [0.15.3](https://github.com/denouche/terraform-provider-awx/compare/v0.15.2...v0.15.3) (2022-07-19)
