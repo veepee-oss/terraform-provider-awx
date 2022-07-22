@@ -99,15 +99,16 @@ func providerConfigure(ctx context.Context, d *schema.ResourceData) (interface{}
 	username := d.Get("username").(string)
 	password := d.Get("password").(string)
 
-	client := http.DefaultClient
-	if d.Get("insecure").(bool) {
-		client.Transport = &http.Transport{
-			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
-		}
-	}
-
 	// Warning or errors can be collected in a slice type
 	var diags diag.Diagnostics
+
+	client := http.DefaultClient
+	if d.Get("insecure").(bool) {
+		customTransport := http.DefaultTransport.(*http.Transport).Clone()
+		customTransport.TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
+		client.Transport = customTransport
+	}
+
 	c, err := awx.NewAWX(hostname, username, password, client)
 	if err != nil {
 		diags = append(diags, diag.Diagnostic{
