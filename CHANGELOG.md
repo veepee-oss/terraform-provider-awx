@@ -1,3 +1,5 @@
+## [0.15.4](https://github.com/denouche/terraform-provider-awx/compare/v0.15.3...v0.15.4) (2022-07-22)
+
 ## [0.15.3](https://github.com/denouche/terraform-provider-awx/compare/v0.15.2...v0.15.3) (2022-07-19)
 
 
