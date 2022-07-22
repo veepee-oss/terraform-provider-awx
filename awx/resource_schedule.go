@@ -99,7 +99,7 @@ func resourceScheduleUpdate(ctx context.Context, d *schema.ResourceData, m inter
 	}
 
 	params := make(map[string]string)
-	_, err := awxService.GetById(id, params)
+	_, err := awxService.GetByID(id, params)
 	if err != nil {
 		return buildDiagNotFoundFail("schedule", id, err)
 	}
@@ -133,7 +133,7 @@ func resourceScheduleRead(ctx context.Context, d *schema.ResourceData, m interfa
 		return diags
 	}
 
-	res, err := awxService.GetById(id, make(map[string]string))
+	res, err := awxService.GetByID(id, make(map[string]string))
 	if err != nil {
 		return buildDiagNotFoundFail("schedule", id, err)
 

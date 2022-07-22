@@ -56,7 +56,7 @@ func dataSourceProjectRolesRead(ctx context.Context, d *schema.ResourceData, m i
 
 	proj_id := d.Get("project_id").(int)
 
-	Project, err := client.ProjectService.GetProjectById(proj_id, params)
+	Project, err := client.ProjectService.GetProjectByID(proj_id, params)
 	if err != nil {
 		return buildDiagnosticsMessage(
 			"Get: Fail to fetch Project",

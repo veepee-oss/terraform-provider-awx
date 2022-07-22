@@ -227,7 +227,7 @@ func resourceTeamRead(ctx context.Context, d *schema.ResourceData, m interface{}
 		return diags
 	}
 
-	team, err := awxService.GetTeamById(id, make(map[string]string))
+	team, err := awxService.GetTeamByID(id, make(map[string]string))
 	if err != nil {
 		return buildDiagNotFoundFail("team", id, err)
 	}

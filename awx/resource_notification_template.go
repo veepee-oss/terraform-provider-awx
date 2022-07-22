@@ -105,7 +105,7 @@ func resourceNotificationTemplateUpdate(ctx context.Context, d *schema.ResourceD
 	}
 
 	params := make(map[string]string)
-	_, err := awxService.GetById(id, params)
+	_, err := awxService.GetByID(id, params)
 	if err != nil {
 		return buildDiagNotFoundFail("notification_template", id, err)
 	}
@@ -150,7 +150,7 @@ func resourceNotificationTemplateRead(ctx context.Context, d *schema.ResourceDat
 		return diags
 	}
 
-	res, err := awxService.GetById(id, make(map[string]string))
+	res, err := awxService.GetByID(id, make(map[string]string))
 	if err != nil {
 		return buildDiagNotFoundFail("notification_template", id, err)
 

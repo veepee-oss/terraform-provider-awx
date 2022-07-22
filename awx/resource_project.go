@@ -214,7 +214,7 @@ func resourceProjectRead(ctx context.Context, d *schema.ResourceData, m interfac
 		return diags
 	}
 
-	res, err := awxService.GetProjectById(id, make(map[string]string))
+	res, err := awxService.GetProjectByID(id, make(map[string]string))
 	if err != nil {
 		return buildDiagNotFoundFail("project", id, err)
 	}
@@ -234,7 +234,7 @@ func resourceProjectDelete(ctx context.Context, d *schema.ResourceData, m interf
 		return diags
 	}
 
-	res, err := awxService.GetProjectById(id, make(map[string]string))
+	res, err := awxService.GetProjectByID(id, make(map[string]string))
 	if err != nil {
 		d.SetId("")
 		return buildDiagNotFoundFail("project", id, err)
