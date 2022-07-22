@@ -1,3 +1,10 @@
+## [0.15.6](https://github.com/denouche/terraform-provider-awx/compare/v0.15.5...v0.15.6) (2022-07-22)
+
+
+### Bug Fixes
+
+* when using insecure connection the PROXY_HTTPS env var was ignored ([#12](https://github.com/denouche/terraform-provider-awx/issues/12)) ([e457deb](https://github.com/denouche/terraform-provider-awx/commit/e457deb4644f82e4c4e3af27e07df7ba565cbbaa))
+
 ## [0.15.5](https://github.com/denouche/terraform-provider-awx/compare/v0.15.4...v0.15.5) (2022-07-22)
 
 
