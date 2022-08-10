@@ -105,6 +105,14 @@ func resourceInventorySource() *schema.Resource {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
+			"source_project_id": {
+				Type:     schema.TypeInt,
+				Optional: true,
+			},
+			"source_path": {
+				Type:     schema.TypeString,
+				Optional: true,
+			},
 		},
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
@@ -131,13 +139,13 @@ func resourceInventorySourceCreate(ctx context.Context, d *schema.ResourceData, 
 		"host_filter":          d.Get("host_filter").(string),
 		"update_cache_timeout": d.Get("update_cache_timeout").(int),
 		"verbosity":            d.Get("verbosity").(int),
+		"source_project":       d.Get("source_project_id").(int),
+		"source_path":          d.Get("source_path").(string),
 		// obsolete schema added so terraform doesn't break
 		// these don't do anything in later versions of AWX! Update your code.
 		"source_regions":   d.Get("source_regions").(string),
 		"instance_filters": d.Get("instance_filters").(string),
 		"group_by":         d.Get("group_by").(string),
-		// "source_project":   d.Get("source_project_id").(int),
-		// "source_path":      d.Get("source_path").(string),
 	}, map[string]string{})
 	if err != nil {
 		return buildDiagCreateFail(diagElementInventorySourceTitle, err)
@@ -171,13 +179,13 @@ func resourceInventorySourceUpdate(ctx context.Context, d *schema.ResourceData, 
 		"host_filter":          d.Get("host_filter").(string),
 		"update_cache_timeout": d.Get("update_cache_timeout").(int),
 		"verbosity":            d.Get("verbosity").(int),
+		"source_project":       d.Get("source_project_id").(int),
+		"source_path":          d.Get("source_path").(string),
 		// obsolete schema added so terraform doesn't break
 		// these don't do anything in later versions of AWX! Update your code.
 		"source_regions":   d.Get("source_regions").(string),
 		"instance_filters": d.Get("instance_filters").(string),
 		"group_by":         d.Get("group_by").(string),
-		// "source_project":   d.Get("source_project_id").(int),
-		// "source_path":      d.Get("source_path").(string),
 	}, nil)
 	if err != nil {
 		return buildDiagUpdateFail(diagElementInventorySourceTitle, id, err)
@@ -233,13 +241,13 @@ func setInventorySourceResourceData(d *schema.ResourceData, r *awx.InventorySour
 	d.Set("host_filter", r.HostFilter)
 	d.Set("update_cache_timeout", r.UpdateCacheTimeout)
 	d.Set("verbosity", r.Verbosity)
+	d.Set("source_project_id", r.SourceProject)
+	d.Set("source_path", r.SourcePath)
 	// obsolete schema added so terraform doesn't break
 	// these don't do anything in later versions of AWX! Update your code.
 	d.Set("source_regions", r.SourceRegions)
 	d.Set("instance_filters", r.InstanceFilters)
 	d.Set("group_by", r.GroupBy)
-	// d.Set("source_project_id", r.SourceProject)
-	// d.Set("source_path", r.SourcePath)
 
 	return d
 }
