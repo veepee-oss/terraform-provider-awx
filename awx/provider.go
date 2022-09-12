@@ -63,6 +63,7 @@ func Provider() *schema.Provider {
 			"awx_schedule":                                            resourceSchedule(),
 			"awx_settings_ldap_team_map":                              resourceSettingsLDAPTeamMap(),
 			"awx_team":                                                resourceTeam(),
+			"awx_user":                                                resourceUser(),
 			"awx_workflow_job_template_node_always":                   resourceWorkflowJobTemplateNodeAlways(),
 			"awx_workflow_job_template_node_failure":                  resourceWorkflowJobTemplateNodeFailure(),
 			"awx_workflow_job_template_node_success":                  resourceWorkflowJobTemplateNodeSuccess(),
