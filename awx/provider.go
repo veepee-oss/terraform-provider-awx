@@ -87,6 +87,7 @@ func Provider() *schema.Provider {
 			"awx_notification_template":      dataSourceNotificationTemplate(),
 			"awx_organization":               dataSourceOrganization(),
 			"awx_organizations":              dataSourceOrganizations(),
+			"awx_organization_role":          dataSourceOrganizationRole(),
 			"awx_project":                    dataSourceProject(),
 			"awx_project_role":               dataSourceProjectRole(),
 			"awx_schedule":                   dataSourceSchedule(),
