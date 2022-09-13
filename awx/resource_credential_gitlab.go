@@ -4,7 +4,12 @@
 Example Usage
 
 ```hcl
-*TBD*
+resource "awx_credential_gitlab" "credential" {
+   organization_id = awx_organization.default.id
+   name            = "awx-scm-credential"
+   description 	   = "test"
+   token           = "My_TOKEN"
+}
 ```
 
 */
