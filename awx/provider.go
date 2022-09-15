@@ -62,6 +62,7 @@ func Provider() *schema.Provider {
 			"awx_organization_galaxy_credential":                      resourceOrganizationsGalaxyCredentials(),
 			"awx_project":                                             resourceProject(),
 			"awx_schedule":                                            resourceSchedule(),
+			"awx_setting":                                             resourceSetting(),
 			"awx_settings_ldap_team_map":                              resourceSettingsLDAPTeamMap(),
 			"awx_team":                                                resourceTeam(),
 			"awx_user":                                                resourceUser(),
