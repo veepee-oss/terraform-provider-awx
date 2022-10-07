@@ -48,6 +48,7 @@ func Provider() *schema.Provider {
 			"awx_credential_galaxy":                                   resourceCredentialGalaxy(),
 			"awx_execution_environment":                               resourceExecutionEnvironment(),
 			"awx_host":                                                resourceHost(),
+			"awx_instance_group":                                      resourceInstanceGroup(),
 			"awx_inventory_group":                                     resourceInventoryGroup(),
 			"awx_inventory_source":                                    resourceInventorySource(),
 			"awx_inventory":                                           resourceInventory(),
