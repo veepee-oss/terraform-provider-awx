@@ -1,3 +1,10 @@
+# [0.16.0](https://github.com/denouche/terraform-provider-awx/compare/v0.15.6...v0.16.0) (2022-10-25)
+
+
+### Features
+
+* upgrade goawx lib to 0.14.1 ([#22](https://github.com/denouche/terraform-provider-awx/issues/22)) ([3193f56](https://github.com/denouche/terraform-provider-awx/commit/3193f56a55ac96103f0b2a4f355f0cd723116f86))
+
 ## [0.15.6](https://github.com/denouche/terraform-provider-awx/compare/v0.15.5...v0.15.6) (2022-07-22)
 
 
