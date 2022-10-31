@@ -1,3 +1,10 @@
+# [0.17.0](https://github.com/denouche/terraform-provider-awx/compare/v0.16.0...v0.17.0) (2022-10-31)
+
+
+### Features
+
+* adds the possibility to use source_id inside resource_inventory_source ([#20](https://github.com/denouche/terraform-provider-awx/issues/20)) ([6891c9e](https://github.com/denouche/terraform-provider-awx/commit/6891c9eb98b8ca916746af08c640520f07d29dda))
+
 # [0.16.0](https://github.com/denouche/terraform-provider-awx/compare/v0.15.6...v0.16.0) (2022-10-25)
 
 
