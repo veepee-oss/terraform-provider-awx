@@ -1,3 +1,10 @@
+# [0.18.0](https://github.com/denouche/terraform-provider-awx/compare/v0.17.0...v0.18.0) (2022-11-14)
+
+
+### Features
+
+* add AWX token authentication ([#15](https://github.com/denouche/terraform-provider-awx/issues/15)) ([55b7d41](https://github.com/denouche/terraform-provider-awx/commit/55b7d41579f79d7fbb1aa61bd243405a81815748))
+
 # [0.17.0](https://github.com/denouche/terraform-provider-awx/compare/v0.16.0...v0.17.0) (2022-10-31)
 
 
