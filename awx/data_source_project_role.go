@@ -68,10 +68,8 @@ func dataSourceProjectRolesRead(ctx context.Context, d *schema.ResourceData, m i
 	roleslist := []*awx.ApplyRole{
 		Project.SummaryFields.ObjectRoles.UseRole,
 		Project.SummaryFields.ObjectRoles.AdminRole,
-		Project.SummaryFields.ObjectRoles.AdhocRole,
 		Project.SummaryFields.ObjectRoles.UpdateRole,
 		Project.SummaryFields.ObjectRoles.ReadRole,
-		Project.SummaryFields.ObjectRoles.ExecuteRole,
 	}
 
 	if roleID, okID := d.GetOk("id"); okID {

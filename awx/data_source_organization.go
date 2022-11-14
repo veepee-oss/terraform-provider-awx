@@ -61,15 +61,15 @@ func dataSourceOrganizationRead(ctx context.Context, d *schema.ResourceData, m i
 	organizations, err := client.OrganizationsService.ListOrganizations(params)
 	if err != nil {
 		return buildDiagnosticsMessage(
-			"Get: Fail to fetch Inventory Group",
-			"Fail to find the group got: %s",
+			"Get: Fail to fetch organization",
+			"Fail to find the organization got: %s",
 			err.Error(),
 		)
 	}
 	if len(organizations) > 1 {
 		return buildDiagnosticsMessage(
 			"Get: find more than one Element",
-			"The Query Returns more than one Group, %d",
+			"The Query Returns more than one organization, %d",
 			len(organizations),
 		)
 		return diags
