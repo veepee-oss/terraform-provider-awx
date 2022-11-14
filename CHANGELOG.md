@@ -1,3 +1,12 @@
+# [0.19.0](https://github.com/denouche/terraform-provider-awx/compare/v0.18.0...v0.19.0) (2022-11-14)
+
+
+### Features
+
+* Add organization role data source ([4bc4065](https://github.com/denouche/terraform-provider-awx/commit/4bc40653f96d92c47d0e0f5fb53d4172661491f4))
+* Add setting resource ([b1b1a24](https://github.com/denouche/terraform-provider-awx/commit/b1b1a2403887599bd451e54094a48c7e728aa8da))
+* fetch upstream ([8cc9cb0](https://github.com/denouche/terraform-provider-awx/commit/8cc9cb0f160b779e02f17fab10c03d4cb7ec54b9)), closes [#16](https://github.com/denouche/terraform-provider-awx/issues/16)
+
 # [0.18.0](https://github.com/denouche/terraform-provider-awx/compare/v0.17.0...v0.18.0) (2022-11-14)
 
 
