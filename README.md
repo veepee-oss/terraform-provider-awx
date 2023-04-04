@@ -1,6 +1,6 @@
 # Terraform Provider AWX
 
-_Fork from [mrcrilly/terraform-provider-awx](https://github.com/mrcrilly/terraform-provider-awx) for develop additional functions.
+_Fork from [vaxvms/terraform-provider-awx](https://github.com/vaxvms/terraform-provider-awx) for develop additional functions.
 
 Coming soon.
 
