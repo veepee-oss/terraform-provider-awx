@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/roondar/terraform-provider-awx/compare/v1.1.0...v1.2.0) (2023-04-05)
+
+
+### Features
+
+* Use roondar/goawx v1.1.0 ([7288f19](https://github.com/roondar/terraform-provider-awx/commit/7288f19b1fc6cfc4e413041edb189db14e32b216))
+
 # [1.1.0](https://github.com/roondar/terraform-provider-awx/compare/v1.0.0...v1.1.0) (2023-04-04)
 
 
