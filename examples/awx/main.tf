@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     awx = {
-      source = "github.com/denouche/awx"
+      source = "veepee-oss/awx"
       version = "0.1"
     }
   }

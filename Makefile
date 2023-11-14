@@ -1,6 +1,6 @@
 TEST?=$$(go list ./... | grep -v 'vendor')
 HOSTNAME=github.com
-NAMESPACE=denouche
+NAMESPACE=veepee-oss
 NAME=awx
 BINARY=terraform-provider-${NAME}
 VERSION=0.1
