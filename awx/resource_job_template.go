@@ -28,7 +28,7 @@ import (
 	"log"
 	"strconv"
 
-	awx "github.com/denouche/goawx/client"
+	awx "github.com/veepee-oss/goawx/client"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
@@ -73,6 +73,11 @@ func resourceJobTemplate() *schema.Resource {
 				Type:     schema.TypeInt,
 				Optional: true,
 				Default:  0,
+			},
+			"job_slice_count": {
+				Type:     schema.TypeInt,
+				Optional: true,
+				Default:  1,
 			},
 			"limit": {
 				Type:     schema.TypeString,
@@ -132,6 +137,11 @@ func resourceJobTemplate() *schema.Resource {
 				Default:  false,
 			},
 			"ask_limit_on_launch": {
+				Type:     schema.TypeBool,
+				Optional: true,
+				Default:  false,
+			},
+			"ask_job_slice_count_on_launch": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
@@ -211,38 +221,40 @@ func resourceJobTemplateCreate(ctx context.Context, d *schema.ResourceData, m in
 	awxService := client.JobTemplateService
 
 	result, err := awxService.CreateJobTemplate(map[string]interface{}{
-		"name":                     d.Get("name").(string),
-		"description":              d.Get("description").(string),
-		"job_type":                 d.Get("job_type").(string),
-		"inventory":                AtoipOr(d.Get("inventory_id").(string), nil),
-		"project":                  d.Get("project_id").(int),
-		"playbook":                 d.Get("playbook").(string),
-		"forks":                    d.Get("forks").(int),
-		"limit":                    d.Get("limit").(string),
-		"verbosity":                d.Get("verbosity").(int),
-		"extra_vars":               d.Get("extra_vars").(string),
-		"job_tags":                 d.Get("job_tags").(string),
-		"force_handlers":           d.Get("force_handlers").(bool),
-		"skip_tags":                d.Get("skip_tags").(string),
-		"start_at_task":            d.Get("start_at_task").(string),
-		"timeout":                  d.Get("timeout").(int),
-		"use_fact_cache":           d.Get("use_fact_cache").(bool),
-		"host_config_key":          d.Get("host_config_key").(string),
-		"ask_diff_mode_on_launch":  d.Get("ask_diff_mode_on_launch").(bool),
-		"ask_variables_on_launch":  d.Get("ask_variables_on_launch").(bool),
-		"ask_limit_on_launch":      d.Get("ask_limit_on_launch").(bool),
-		"ask_tags_on_launch":       d.Get("ask_tags_on_launch").(bool),
-		"ask_skip_tags_on_launch":  d.Get("ask_skip_tags_on_launch").(bool),
-		"ask_job_type_on_launch":   d.Get("ask_job_type_on_launch").(bool),
-		"ask_verbosity_on_launch":  d.Get("ask_verbosity_on_launch").(bool),
-		"ask_inventory_on_launch":  d.Get("ask_inventory_on_launch").(bool),
-		"ask_credential_on_launch": d.Get("ask_credential_on_launch").(bool),
-		"survey_enabled":           d.Get("survey_enabled").(bool),
-		"become_enabled":           d.Get("become_enabled").(bool),
-		"diff_mode":                d.Get("diff_mode").(bool),
-		"allow_simultaneous":       d.Get("allow_simultaneous").(bool),
-		"custom_virtualenv":        AtoipOr(d.Get("custom_virtualenv").(string), nil),
-		"execution_environment":    AtoipOr(d.Get("execution_environment").(string), nil),
+		"name":                          d.Get("name").(string),
+		"description":                   d.Get("description").(string),
+		"job_type":                      d.Get("job_type").(string),
+		"inventory":                     AtoipOr(d.Get("inventory_id").(string), nil),
+		"project":                       d.Get("project_id").(int),
+		"playbook":                      d.Get("playbook").(string),
+		"forks":                         d.Get("forks").(int),
+		"job_slice_count":               d.Get("job_slice_count").(int),
+		"limit":                         d.Get("limit").(string),
+		"verbosity":                     d.Get("verbosity").(int),
+		"extra_vars":                    d.Get("extra_vars").(string),
+		"job_tags":                      d.Get("job_tags").(string),
+		"force_handlers":                d.Get("force_handlers").(bool),
+		"skip_tags":                     d.Get("skip_tags").(string),
+		"start_at_task":                 d.Get("start_at_task").(string),
+		"timeout":                       d.Get("timeout").(int),
+		"use_fact_cache":                d.Get("use_fact_cache").(bool),
+		"host_config_key":               d.Get("host_config_key").(string),
+		"ask_diff_mode_on_launch":       d.Get("ask_diff_mode_on_launch").(bool),
+		"ask_variables_on_launch":       d.Get("ask_variables_on_launch").(bool),
+		"ask_limit_on_launch":           d.Get("ask_limit_on_launch").(bool),
+		"ask_job_slice_count_on_launch": d.Get("ask_limit_on_launch").(bool),
+		"ask_tags_on_launch":            d.Get("ask_tags_on_launch").(bool),
+		"ask_skip_tags_on_launch":       d.Get("ask_skip_tags_on_launch").(bool),
+		"ask_job_type_on_launch":        d.Get("ask_job_type_on_launch").(bool),
+		"ask_verbosity_on_launch":       d.Get("ask_verbosity_on_launch").(bool),
+		"ask_inventory_on_launch":       d.Get("ask_inventory_on_launch").(bool),
+		"ask_credential_on_launch":      d.Get("ask_credential_on_launch").(bool),
+		"survey_enabled":                d.Get("survey_enabled").(bool),
+		"become_enabled":                d.Get("become_enabled").(bool),
+		"diff_mode":                     d.Get("diff_mode").(bool),
+		"allow_simultaneous":            d.Get("allow_simultaneous").(bool),
+		"custom_virtualenv":             AtoipOr(d.Get("custom_virtualenv").(string), nil),
+		"execution_environment":         AtoipOr(d.Get("execution_environment").(string), nil),
 	}, map[string]string{})
 	if err != nil {
 		log.Printf("Fail to Create Template %v", err)
@@ -274,38 +286,40 @@ func resourceJobTemplateUpdate(ctx context.Context, d *schema.ResourceData, m in
 	}
 
 	_, err = awxService.UpdateJobTemplate(id, map[string]interface{}{
-		"name":                     d.Get("name").(string),
-		"description":              d.Get("description").(string),
-		"job_type":                 d.Get("job_type").(string),
-		"inventory":                AtoipOr(d.Get("inventory_id").(string), nil),
-		"project":                  d.Get("project_id").(int),
-		"playbook":                 d.Get("playbook").(string),
-		"forks":                    d.Get("forks").(int),
-		"limit":                    d.Get("limit").(string),
-		"verbosity":                d.Get("verbosity").(int),
-		"extra_vars":               d.Get("extra_vars").(string),
-		"job_tags":                 d.Get("job_tags").(string),
-		"force_handlers":           d.Get("force_handlers").(bool),
-		"skip_tags":                d.Get("skip_tags").(string),
-		"start_at_task":            d.Get("start_at_task").(string),
-		"timeout":                  d.Get("timeout").(int),
-		"use_fact_cache":           d.Get("use_fact_cache").(bool),
-		"host_config_key":          d.Get("host_config_key").(string),
-		"ask_diff_mode_on_launch":  d.Get("ask_diff_mode_on_launch").(bool),
-		"ask_variables_on_launch":  d.Get("ask_variables_on_launch").(bool),
-		"ask_limit_on_launch":      d.Get("ask_limit_on_launch").(bool),
-		"ask_tags_on_launch":       d.Get("ask_tags_on_launch").(bool),
-		"ask_skip_tags_on_launch":  d.Get("ask_skip_tags_on_launch").(bool),
-		"ask_job_type_on_launch":   d.Get("ask_job_type_on_launch").(bool),
-		"ask_verbosity_on_launch":  d.Get("ask_verbosity_on_launch").(bool),
-		"ask_inventory_on_launch":  d.Get("ask_inventory_on_launch").(bool),
-		"ask_credential_on_launch": d.Get("ask_credential_on_launch").(bool),
-		"survey_enabled":           d.Get("survey_enabled").(bool),
-		"become_enabled":           d.Get("become_enabled").(bool),
-		"diff_mode":                d.Get("diff_mode").(bool),
-		"allow_simultaneous":       d.Get("allow_simultaneous").(bool),
-		"custom_virtualenv":        AtoipOr(d.Get("custom_virtualenv").(string), nil),
-		"execution_environment":    AtoipOr(d.Get("execution_environment").(string), nil),
+		"name":                          d.Get("name").(string),
+		"description":                   d.Get("description").(string),
+		"job_type":                      d.Get("job_type").(string),
+		"inventory":                     AtoipOr(d.Get("inventory_id").(string), nil),
+		"project":                       d.Get("project_id").(int),
+		"playbook":                      d.Get("playbook").(string),
+		"forks":                         d.Get("forks").(int),
+		"job_slice_count":               d.Get("job_slice_count").(int),
+		"limit":                         d.Get("limit").(string),
+		"verbosity":                     d.Get("verbosity").(int),
+		"extra_vars":                    d.Get("extra_vars").(string),
+		"job_tags":                      d.Get("job_tags").(string),
+		"force_handlers":                d.Get("force_handlers").(bool),
+		"skip_tags":                     d.Get("skip_tags").(string),
+		"start_at_task":                 d.Get("start_at_task").(string),
+		"timeout":                       d.Get("timeout").(int),
+		"use_fact_cache":                d.Get("use_fact_cache").(bool),
+		"host_config_key":               d.Get("host_config_key").(string),
+		"ask_diff_mode_on_launch":       d.Get("ask_diff_mode_on_launch").(bool),
+		"ask_variables_on_launch":       d.Get("ask_variables_on_launch").(bool),
+		"ask_limit_on_launch":           d.Get("ask_limit_on_launch").(bool),
+		"ask_job_slice_count_on_launch": d.Get("ask_limit_on_launch").(bool),
+		"ask_tags_on_launch":            d.Get("ask_tags_on_launch").(bool),
+		"ask_skip_tags_on_launch":       d.Get("ask_skip_tags_on_launch").(bool),
+		"ask_job_type_on_launch":        d.Get("ask_job_type_on_launch").(bool),
+		"ask_verbosity_on_launch":       d.Get("ask_verbosity_on_launch").(bool),
+		"ask_inventory_on_launch":       d.Get("ask_inventory_on_launch").(bool),
+		"ask_credential_on_launch":      d.Get("ask_credential_on_launch").(bool),
+		"survey_enabled":                d.Get("survey_enabled").(bool),
+		"become_enabled":                d.Get("become_enabled").(bool),
+		"diff_mode":                     d.Get("diff_mode").(bool),
+		"allow_simultaneous":            d.Get("allow_simultaneous").(bool),
+		"custom_virtualenv":             AtoipOr(d.Get("custom_virtualenv").(string), nil),
+		"execution_environment":         AtoipOr(d.Get("execution_environment").(string), nil),
 	}, map[string]string{})
 	if err != nil {
 		diags = append(diags, diag.Diagnostic{
@@ -342,6 +356,7 @@ func setJobTemplateResourceData(d *schema.ResourceData, r *awx.JobTemplate) *sch
 	d.Set("ask_credential_on_launch", r.AskCredentialOnLaunch)
 	d.Set("ask_job_type_on_launch", r.AskJobTypeOnLaunch)
 	d.Set("ask_limit_on_launch", r.AskLimitOnLaunch)
+	d.Set("ask_job_slice_count_on_launch", r.AskJobSliceCountOnLaunch)
 	d.Set("ask_skip_tags_on_launch", r.AskSkipTagsOnLaunch)
 	d.Set("ask_tags_on_launch", r.AskTagsOnLaunch)
 	d.Set("ask_variables_on_launch", r.AskVariablesOnLaunch)
@@ -349,6 +364,7 @@ func setJobTemplateResourceData(d *schema.ResourceData, r *awx.JobTemplate) *sch
 	d.Set("extra_vars", normalizeJsonYaml(r.ExtraVars))
 	d.Set("force_handlers", r.ForceHandlers)
 	d.Set("forks", r.Forks)
+	d.Set("job_slice_count", r.JobSliceCount)
 	d.Set("host_config_key", r.HostConfigKey)
 	d.Set("inventory_id", r.Inventory)
 	d.Set("job_tags", r.JobTags)

@@ -13,8 +13,8 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/denouche/terraform-provider-awx/awx"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+	"github.com/veepee-oss/terraform-provider-awx/awx"
 )
 
 const (
