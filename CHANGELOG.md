@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/veepee-oss/terraform-provider-awx/compare/v1.2.1...v1.3.0) (2023-11-14)
+
+
+### Features
+
+* upgrade goawx & support for job_slice_count ([f7b6198](https://github.com/veepee-oss/terraform-provider-awx/commit/f7b61982af53ecc64c4e38ddab112f8b56a64857))
+
 ## [1.2.1](https://github.com/roondar/terraform-provider-awx/compare/v1.2.0...v1.2.1) (2023-04-05)
 
 
