@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/veepee-oss/terraform-provider-awx/compare/v1.0.0...v1.0.1) (2025-07-30)
+
+
+### Bug Fixes
+
+* **credential:** allow to define galaxy credential type id ([f9591ec](https://github.com/veepee-oss/terraform-provider-awx/commit/f9591ec681e1a69cc8ff36d0fba94d0594caaaee))
+* **credential:** move credential_type_id to default ([b1bf2df](https://github.com/veepee-oss/terraform-provider-awx/commit/b1bf2dff0dbebfbe91a164d5c9a234b99c9075f3))
+
 # 1.0.0 (2023-11-14)
 
 
