@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/veepee-oss/terraform-provider-awx/compare/v1.0.1...v1.0.2) (2025-07-30)
+
+
+### Bug Fixes
+
+* **release:** use new args to clean dist instead of deprecated --rm-dist ([4ce36ba](https://github.com/veepee-oss/terraform-provider-awx/commit/4ce36ba4206224d14e381956a1f0d650c650b497))
+
 ## [1.0.1](https://github.com/veepee-oss/terraform-provider-awx/compare/v1.0.0...v1.0.1) (2025-07-30)
 
 
