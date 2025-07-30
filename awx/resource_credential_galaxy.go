@@ -42,7 +42,7 @@ func resourceCredentialGalaxy() *schema.Resource {
 			"credential_type_id": {
 				Type:     schema.TypeInt,
 				Default: 18,
-				Required: true,
+				Optional: true,
 			},
 			"url": {
 				Type:     schema.TypeString,
