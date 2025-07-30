@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/veepee-oss/terraform-provider-awx/compare/v1.0.2...v1.0.3) (2025-07-30)
+
+
+### Bug Fixes
+
+* **goreleaser:** move to configuration v2 and remove changelog ([7543a26](https://github.com/veepee-oss/terraform-provider-awx/commit/7543a2619bee29e0be2f2b0304d0106ccd2aa27f))
+
 ## [1.0.2](https://github.com/veepee-oss/terraform-provider-awx/compare/v1.0.1...v1.0.2) (2025-07-30)
 
 
