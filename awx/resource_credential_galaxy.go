@@ -39,6 +39,11 @@ func resourceCredentialGalaxy() *schema.Resource {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
+			"credential_type_id": {
+				Type:     schema.TypeInt,
+				Default: 18,
+				Optional: true,
+			},
 			"url": {
 				Type:     schema.TypeString,
 				Required: true,
@@ -64,7 +69,7 @@ func resourceCredentialGalaxyCreate(ctx context.Context, d *schema.ResourceData,
 		"name":            d.Get("name").(string),
 		"description":     d.Get("description").(string),
 		"organization":    d.Get("organization_id").(int),
-		"credential_type": 18, // Ansible Galaxy/Automation Hub API Token
+		"credential_type": d.Get("credential_type_id").(int), // Ansible Galaxy/Automation Hub API Token
 		"inputs": map[string]interface{}{
 			"url":      d.Get("url").(string),
 			"auth_url": d.Get("auth_url").(string),
