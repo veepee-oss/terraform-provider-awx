@@ -76,6 +76,7 @@ func Provider() *schema.Provider {
 			"awx_workflow_job_template_node_always":                   resourceWorkflowJobTemplateNodeAlways(),
 			"awx_workflow_job_template_node_failure":                  resourceWorkflowJobTemplateNodeFailure(),
 			"awx_workflow_job_template_node_success":                  resourceWorkflowJobTemplateNodeSuccess(),
+			"awx_workflow_job_template_node_credential":               resourceWorkflowJobTemplateNodeCredentials(),
 			"awx_workflow_job_template_node":                          resourceWorkflowJobTemplateNode(),
 			"awx_workflow_job_template":                               resourceWorkflowJobTemplate(),
 			"awx_workflow_job_template_schedule":                      resourceWorkflowJobTemplateSchedule(),
