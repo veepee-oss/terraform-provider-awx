@@ -23,7 +23,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
-func resourceOrganizationsGalaxyCredentials() *schema.Resource {
+func resourceOrganizationsInstanceGroups() *schema.Resource {
 	return &schema.Resource{
 		CreateContext: resourceOrganizationsInstanceGroupsCreate,
 		DeleteContext: resourceOrganizationsInstanceGroupsDelete,
