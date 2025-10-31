@@ -56,7 +56,7 @@ func resourceOrganizationsInstanceGroupsCreate(ctx context.Context, d *schema.Re
 	}
 
 	result, err := awxService.AssociateInstanceGroups(OrganizationID, map[string]interface{}{
-		"id": d.Get("credential_id").(int),
+		"id": d.Get("instance_group_id").(int),
 	}, map[string]string{})
 
 	if err != nil {
@@ -83,7 +83,7 @@ func resourceOrganizationsInstanceGroupsDelete(ctx context.Context, d *schema.Re
 	}
 
 	_, err = awxService.DisAssociateInstanceGroups(res.ID, map[string]interface{}{
-		"id": d.Get("credential_id").(int),
+		"id": d.Get("instance_group_id").(int),
 	}, map[string]string{})
 	if err != nil {
 		return buildDiagDeleteFail("Organization DisAssociateInstanceGroups", fmt.Sprintf("DisAssociateInstanceGroups %v, from OrganizationID %v got %s ", d.Get("credential_id").(int), d.Get("organization_id").(int), err.Error()))
