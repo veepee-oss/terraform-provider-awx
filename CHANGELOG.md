@@ -1,3 +1,18 @@
+# [1.1.0](https://github.com/veepee-oss/terraform-provider-awx/compare/v1.0.3...v1.1.0) (2025-11-03)
+
+
+### Bug Fixes
+
+* **goawx:** use latest version available ([89d069c](https://github.com/veepee-oss/terraform-provider-awx/commit/89d069ca81804a48f659f5d3187022f9f114e2b5))
+* **organization_instance_group:** use correct input field ([7ee0c5d](https://github.com/veepee-oss/terraform-provider-awx/commit/7ee0c5d23667d8bf97ffbf1614c5bfd31ef6a875))
+* **provider:** typo ([6ef4e74](https://github.com/veepee-oss/terraform-provider-awx/commit/6ef4e747a6fa4e7174eb53766e15e7d8f4d356e5))
+* **resourde:** rename organization_instance_group ([5fda8ef](https://github.com/veepee-oss/terraform-provider-awx/commit/5fda8ef1f219597672909a51ccbde3e4663c4030))
+
+
+### Features
+
+* **ressources:** manage organization instance group endpoint ([55637fd](https://github.com/veepee-oss/terraform-provider-awx/commit/55637fd4d6707e40a33d7770a75c49298d43a0cf))
+
 ## [1.0.3](https://github.com/veepee-oss/terraform-provider-awx/compare/v1.0.2...v1.0.3) (2025-07-30)
 
 
